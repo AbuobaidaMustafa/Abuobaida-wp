@@ -1,40 +1,85 @@
 # Decisions
 
-Status: ✅ confirmed · 🟡 recommended, awaiting owner · ❓ open question. Add new entries at the bottom of the relevant list; never rewrite history — supersede instead.
+Each entry has an ID, a status and its evidence.
+
+**Statuses:**
+
+- ✅ confirmed by the owner;
+- 🟡 recommended and awaiting the owner;
+- ❓ open question.
+
+**How to change this file:**
+
+- Never rewrite an entry. Supersede it with a new entry that points back to it.
+- Sessions read only the IDs their spec lists.
 
 ## Confirmed
 
-| ID | Decision | Date | Notes |
+| ID | Decision | Date | Basis |
 |---|---|---|---|
-| D-01 | Evolve the existing repo `AbuobaidaMustafa/Abuobaida-wp`; no complete rewrite. Replace the iPortfolio presentation layer progressively. | 2026-10-14 | Owner brief + audit §7 |
-| D-03 | Site languages: **Arabic, English, Chinese**. | 2026-10-14 | Owner request. Chinese assumed Simplified (`zh_CN`) — confirm in D-12. |
-| D-04 | This project is fully separate from the Dropshipping OMS project (code, docs, repos, sessions). | 2026-10-14 | Owner brief |
+| D-01 | Evolve the existing repo `AbuobaidaMustafa/Abuobaida-wp` and keep the theme slug `abuobaida`. No from-scratch rewrite: replace the presentation layer (AUDIT §7). | 2026-10-14 | Owner brief, audit |
+| D-03 | The site is published in **Arabic, English and Chinese**. | 2026-10-14 | Owner |
+| D-04 | This project is fully separate from the Dropshipping OMS project: code, documentation, repositories and sessions. | 2026-10-14 | Owner brief |
+| D-18 | **Design gate:** no UI implementation (Sessions 06 onward) until the owner has reviewed and approved the designs in Claude Design (gate G1). | 2026-10-14 | Owner: "I want to check before implemented" |
 
-## Recommended — awaiting owner approval
+## Recommended, awaiting approval
 
-| ID | Proposal | Main trade-off |
-|---|---|---|
-| D-02 | **Classic theme + `theme.json`**, not a block/Site Editor theme. | Block theme would let you edit layout in the Site Editor, but would require rebuilding header/footer/home as block templates and re-wiring ACF + Polylang + CF7 through block bindings — high migration cost for a site whose content is structured fields, not free-form layouts. `theme.json` still gives tokens and good editor styling. |
-| D-05 | Register the `project` post type + `project_type` taxonomy in a **small companion plugin** (`abuobaida-core`, separate repo or `/plugins` folder), not in the theme. | Correct WordPress separation and shows best practice; costs one more thing to install. Alternative: theme-registered (simpler, but projects disappear if the theme changes). |
-| D-06 | Remove **age, nationality and phone** from the public page; keep email (preferably a domain address) + contact form. | Less personal info exposed vs. what some regional clients expect to see. |
-| D-07 | Keep blog templates working and styled, but no blog-specific features (no related posts etc.). | Depends on whether you publish posts. |
-| D-08 | Multilingual plugin: **Polylang (free)**. One post per language; theme strings via `.po/.mo`. Theme integrates only through `inc/i18n.php`. | WPML is more automatic (and paid); Polylang free can't sync ACF fields across translations, so each language's fields are entered separately — acceptable for a small site. |
-| D-09 | Testimonials: keep the existing `cb/carousel` content short-term; long-term render them as a static, accessible list/grid (no autoplay) from a `testimonial` source. | Autoplay carousels fail accessibility; changing the source means re-entering reviews. |
-| D-10 | Fonts: self-host one Latin+Arabic family (e.g. IBM Plex Sans Arabic / Noto Sans Arabic pairing) + a mono; **Chinese uses the system CJK stack** (PingFang SC, Microsoft YaHei, Noto Sans CJK SC). | CJK webfonts are multi-MB; system fonts are fast and native-looking but vary by device. Final pick in Session 05. |
-| D-11 | Light theme only at launch; dark mode only if Session 04 shows it serves the design. | Owner brief: no fashion-driven dark mode. |
-| D-13 | Minimum requirements: **WordPress 6.5, PHP 8.1** — pending hosting check. | Higher minimums allow cleaner code; must not exceed what the host runs. |
-| D-14 | No build toolchain at first: plain CSS (custom + logical properties) and vanilla JS. Composer for PHPCS/linting only. | Revisit only if CSS size or JS needs justify it. |
-| D-15 | Remove skill-percentage bars and the Typed.js animation. | Percentages read as unprofessional and are inaccessible; animation adds JS for little value. |
+### Architecture
+
+| ID | Proposal | Evidence | Main trade-off |
+|---|---|---|---|
+| D-02 | Use a **classic theme with `theme.json` v3**. Not a block theme or the Site Editor. Revisit only if the owner buys Polylang Pro and wants to edit layouts in the Site Editor. | Underscores is inactive, but classic themes are fully supported in 7.1 and `theme.json` v3 is the latest schema. Polylang documents Site Editor translation as Pro-only. The content is structured (projects, fields). | A block theme gives visual layout editing and follows WordPress's direction. It would cost a rebuild into block templates, Polylang Pro for translated template parts, and ACF Blocks (Pro) or custom JS blocks for case studies. |
+| D-05 | Register the `project` post type and its taxonomies in a **small companion plugin** (`abuobaida-core`), not in the theme. | WordPress guidance: content must survive a theme change. | One more thing to install. The theme degrades gracefully when the plugin is missing. |
+| D-13 | Theme header: **Requires at least 6.6, Requires PHP 8.1, Tested up to 7.1**. Production should run WordPress 7.1 on PHP **8.3 or newer** (8.4 recommended). | `theme.json` v3 needs WordPress 6.6. CF7 6.2.2 needs PHP 8.3 and WordPress 7.1. WordPress 7.1 recommends PHP 8.4/8.5. | Older hosts are excluded. Confirm hosting first (Q-03). |
+| D-14 | **No build toolchain.** Plain CSS with custom properties and logical properties. Vanilla JS with deferred scripts or modules. Composer and Node only for development checks. | 11 MB of vendor code and a broken `node-sass` pipeline today. The design needs are modest. | Revisit only if CSS grows past about 60 KB or JS needs bundling. |
+| D-17 | **Branches:** `master` stays production and receives only the optional hotfix (S05). The redesign lives on `v2`, with one `feature/NN-*` branch per session merged into `v2` after owner review. Launch merges `v2` into `master` with tag `v2.0.0`. Nothing is pushed without the owner's approval. | A half-migrated design must never reach the live site. | A long-lived branch has to be rebased if `master` gets hotfixes. They are few. |
+| D-23 | The **homepage and case studies are PHP template parts fed by structured fields**. The About page, generic pages and posts are **block content** styled through `theme.json`. | Gives design control and consistent markup for the key pages, and editor flexibility for prose. Both translate per post with Polylang free. | The owner edits homepage text through fields, not visually. Alternative: homepage as blocks plus Query Loop (more flexible, less designed, heavier core CSS). |
+
+### Content model
+
+| ID | Proposal | Evidence | Main trade-off |
+|---|---|---|---|
+| D-16 | **Use free ACF field types only**: Group, Text, Textarea, Image, File, URL, Link, oEmbed, Taxonomy, Post Object, True/False. No Repeater or Gallery: screenshots go in a core Gallery block in the case study content. No Options page: global settings live in the Customizer. Supersede this if the owner has ACF PRO (Q-08). | ACF 6.8.10 free field list, verified in code. | A fixed number of field slots instead of repeaters. |
+| D-24 | **Capabilities are `project_type` terms**: name, description and order. The homepage capability list links to the projects that prove each one. Terms are translated with Polylang's taxonomy translation. | It ties claims to evidence and needs no Repeater. Polylang free translates taxonomies. | Capabilities without a project need a term with no posts. That's allowed, and the link is hidden. |
+| D-09 | **Testimonials become a `testimonial` post type in the companion plugin, shared across languages** (not Polylang-translated). Fields: client name, original quote with its language, an English and a Chinese translation, project (Post Object), platform name and URL, date. Each page shows the original quote and, where the page language differs, the translation labelled "Translated from Arabic". The current `cb/carousel` content is migrated by hand (two or more reviews). | Keeps one source of truth for genuine reviews. No autoplay carousel, which is an accessibility failure. | Re-entering the reviews once. Permission from the clients (Q-11). |
+| D-19 | **Where settings live:** language-specific content sits on the front page of each language (hero statement, availability, contact form, résumé file). Global non-language settings (email, GitHub, LinkedIn, Mostaql URLs) live in the **Customizer**. | ACF Options pages are Pro-only, and free Polylang can't sync fields. A per-language front page is translated naturally. | Settings sit in two places, documented in `ARCHITECTURE.md`. |
+| D-06 | **Remove age, nationality and phone number** from public pages. Show email (the domain address) and the contact form. | Privacy, finding P-09. | Some regional clients expect a phone number. The owner can opt back in per field. |
+| D-07 | Keep blog templates working and styled. No blog-specific features. | Unknown whether posts exist (Q-05). | None if there are no posts. |
+| D-15 | **Retire** skill percentage bars, the typing animation, scroll-reveal animation, autoplay sliders and the Isotope filter. Use no motion that the visitor didn't trigger. | Finding P-04 (invisible without JS), reduced motion ignored, percentages are meaningless. | Less "movement" on the page. That is intentional. |
+| D-20 | The **Google Map embed** loads only on click, or is replaced by a text location link (owner's choice). | Privacy (third-party request on page load), performance, and an untitled iframe. | One extra click to see the map. |
+
+### Multilingual
+
+| ID | Proposal | Evidence | Main trade-off |
+|---|---|---|---|
+| D-08 | Use **Polylang (free) 3.8+**. Settings: languages en_US, ar, zh_CN; URLs by directory with the default language hidden; **"front page URL contains the language code"** turned on. Translatable: pages, posts, `project`, `project_type`. The theme talks to Polylang only through `inc/i18n.php` and still works without it. | Spike [M]: `dir`/`lang`/`hreflang` correct, `/ar/` and `/zh/` front pages work with that setting. | No field sync (each language fills its own fields), no XLIFF export. WPML is paid and heavier. |
+| D-12 | Default language **English** at `/`, Arabic at `/ar/`, **Simplified Chinese** at `/zh/`. | Matches the current site (English). | If most clients are Arabic-speaking, Arabic could be the default. Owner decides (Q-07). |
+| D-21 | **Western digits (0–9)** in all languages, including Arabic. | Consistency for code, dates and email. Common on the Arabic web. | Some readers prefer Eastern Arabic digits (٠–٩). Owner decides. |
+| D-10 | **Fonts:** self-host one variable family that covers Latin and Arabic (chosen with the design direction: Readex Pro for A, IBM Plex Sans Arabic for B, Alexandria for C). **Chinese uses the system font stack** (PingFang SC, Microsoft YaHei, Noto Sans SC). Every font is SIL Open Font License. | CJK web fonts are several megabytes. Self-hosting avoids third-party requests (finding P-10). | Chinese rendering varies a little by device. |
+
+### Design and release
+
+| ID | Proposal | Evidence | Main trade-off |
+|---|---|---|---|
+| D-25 | Design direction **A, "Survey"**: light, typography-led, the name in three scripts, a contour-line motif from the owner's research, survey blue `#0B5FA5` (6.1:1). Pending the owner's choice in Session 02. | Pre-design canvas, `DESIGN_BRIEF.md`. | B (Console) has stronger continuity with today's identity but weak Arabic and Chinese typography. C (Two Rivers) is the most personal, but costs more and is the hardest in RTL. |
+| D-11 | Light theme only at launch. Dark mode only if the chosen direction calls for it. | Owner brief: no fashion-driven dark mode. | None. |
+| D-22 | Ship an **optional hotfix** (S05) to the current live theme: fix the document shell, guard ACF, make content visible without JS, fix escaping and link names. No visual changes. | The live site is broken for posts and pages and is one plugin deactivation away from a fatal error. The redesign will take weeks. | About one session of work on code that v2 replaces. |
+| D-26 | The **old iPortfolio layer stays in git history** and is not rewritten out of it. The public repository is published only after the BootstrapMade files are removed from the tree. Whether to squash history before going public is decided in S19. | Licence (P-01). Rewriting history is irreversible for anyone who has cloned. | Old commits remain reachable in history. The licence restricts redistribution, so S19 must weigh a fresh public repository against a history rewrite (Q-01). |
 
 ## Open questions for the owner
 
 | ID | Question | Blocks |
 |---|---|---|
-| Q-01 | Which open-source licence? (GPL-2.0-or-later is required for code derived from `_s`; you can choose how to license your own images/content separately.) | 17 |
-| Q-02 | Real projects: list 4–8 projects (name, your role, stack, year, link/repo, screenshots, outcome) incl. AI/ML work. Which may be named publicly? | 06, 09, 11 |
-| Q-03 | Hosting: PHP and WordPress versions; list of active plugins (ACF free/Pro? Contact Form 7, Carousel Block, others). | 01, 13 |
-| Q-04 | Can you export ACF field groups (Tools → Export → JSON) and a WXR content export, or give me a staging copy? | 01, 03, 06 |
-| Q-05 | Do you publish blog posts? | 12 (D-07) |
-| D-12 | Default language (recommend **English**, with `/ar/` and `/zh/` URL prefixes)? Chinese Simplified or Traditional? | 08 |
-| Q-06 | Translations: will you write/review the Arabic and Chinese copy, or should Claude draft translations for your review? | 15 |
-| Q-07 | Updated professional summary: years of experience, current role, AI/ML focus — the current About text ("1+ years", Master's student) is outdated. | 09 |
+| Q-01 | Licence for your own code: GPL-2.0-or-later is required for code derived from `_s`. How do you want to license your images and writing? Should the public repository keep its history or start fresh (D-26)? | S19 |
+| Q-02 | **Real projects:** 4–8 of them. For each: name, your role, stack, year, link or repo, screenshots, outcome. Include AI/ML work. Which may be named publicly? | S07, S09, S12 |
+| Q-03 | **Hosting:** PHP version, WordPress version, the list of active plugins and versions (ACF free or PRO? CF7, Carousel Block, an SEO plugin, cache, security), and whether a staging site is possible. | S01, S05, S18 |
+| Q-04 | ACF export (ACF → Tools → Export → JSON) and a content export (Tools → Export → All content). | S01 |
+| Q-05 | Do you publish blog posts? | S13 (D-07) |
+| Q-06 | Who writes and reviews the Arabic and Chinese text? Should Claude draft and you review? | S17 |
+| Q-07 | Default language (D-12), and Simplified or Traditional Chinese? | S08 |
+| Q-08 | ACF free or PRO? (D-16) | S07 |
+| Q-09 | Updated professional summary: current role, years of experience, Master's status at Lanzhou University, and AI/ML focus. The current About text says "1+ years". | S09, S13 |
+| Q-10 | Is the Arabic spelling أبو عبيدة مصطفى correct? May **马飞** appear on the site? Which photo, if any, should appear? | S03, S09 |
+| Q-11 | May the two Mostaql reviews (Mohammed Sharaf Addin, طالب الاشقر) be shown with names and a link to your Mostaql profile? | S10 |
+| Q-12 | Is your public contact email `info@abuobaida.sd`? Which social profiles are real (GitHub is; LinkedIn? Mostaql URL?) | S08, S10 |
+| Q-13 | Contact-form spam protection: CF7 with Akismet, a honeypot add-on, or Cloudflare Turnstile? | S10 |

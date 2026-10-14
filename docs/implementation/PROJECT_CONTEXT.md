@@ -1,29 +1,47 @@
 # Project Context (read first in every session)
 
-**Project**: Modernize the personal WordPress portfolio theme of Abuobaida Mustafa (web developer: PHP, WordPress, Laravel, full-stack; growing AI/ML focus).
-**Repo**: https://github.com/AbuobaidaMustafa/Abuobaida-wp · theme slug / text domain `abuobaida` · live site abuobaida.sd
-**Separate from**: the owner's Dropshipping OMS project — never mix code, docs or repos.
+**Project:** modernise the personal WordPress portfolio theme of **Abuobaida Mustafa**. He is a web developer (PHP, WordPress, Laravel, full-stack) growing into AI/ML engineering, with research in GIS and snow remote sensing.
+**Repo:** `AbuobaidaMustafa/Abuobaida-wp` · theme slug and text domain `abuobaida` · live site abuobaida.sd
+**Separate from:** the owner's Dropshipping OMS project. Never mix code, docs, repos or sessions (D-04).
 
-## Current state (short)
-- Classic theme: Underscores (`_s`) scaffold + BootstrapMade iPortfolio front-end (free licence — must be replaced before public release).
-- Homepage = `page-home.php` (page slug `home`). Data: ACF groups `about`, `contact_us`; testimonials = `cb/carousel` blocks in page content; contact = CF7 form #138.
-- No CPTs, no tests, no build that works. Full findings: `AUDIT.md`.
+## Today (v1)
 
-## Target
-- Classic theme + `theme.json`, no CSS framework, vanilla JS, logical CSS properties.
-- Languages: **Arabic (RTL), English, Chinese (zh_CN)** — Polylang for content, `.po/.mo` for theme strings.
-- `project` CPT with case-study fields; real projects only.
-- Design: "engineering notebook" — editorial, typography-led, light-first.
+- A classic theme: the Underscores scaffold (upstream inactive since 2025-09) with the free BootstrapMade *iPortfolio* front-end. The licence forbids publishing it, so it must be replaced.
+- The homepage is `page-home.php` (page slug `home`), with ACF groups `about` and `contact_us`, testimonials as `cb/carousel` blocks, and CF7 form #138.
+- Measured problems (AUDIT §2):
+  - two doctypes on the homepage, and posts with no `<body>`;
+  - a fatal error without ACF;
+  - content invisible without JS;
+  - 433 KB of JS;
+  - accent contrast 3.0:1.
+
+## Target (v2)
+
+- A classic theme with `theme.json` v3. No framework, no build step. Logical CSS only. Vanilla deferred JS.
+- A companion plugin `abuobaida-core`: `project` and `testimonial` post types, `project_type` (also the capabilities list) and `project_stack` taxonomies, ACF JSON. **Free ACF field types only** unless the owner has PRO.
+- **Arabic (RTL), English (default, `/`) and Chinese (`/zh/`)** via Polylang free. The front page is `front-page.php`; slug templates don't work for translations.
+- Design: direction A "Survey" is recommended and **awaiting the owner's choice**. No UI code until gate **G1** (D-18). Canvas link in DESIGN_BRIEF.
 
 ## Rules for every session
-1. Read only: this file, `SESSION_INDEX.md`, the active session file, relevant `DECISIONS.md` entries, relevant code. Do not redo the audit.
-2. Inspect code before changing it; preserve features in `IMPLEMENTATION_PLAN.md` §2 unless a decision retires them.
-3. Small, reviewable commits on a feature branch. **Never push, open PRs, change repo visibility, publish releases or pick a licence without explicit owner approval.**
-4. Escape late (`esc_html`, `esc_url`, `esc_attr`, `wp_kses_post`); every user-facing string translatable with text domain `abuobaida`.
-5. CSS: logical properties only (`margin-inline-start`, not `margin-left`); tokens from `theme.json`; no new dependencies without a stated reason.
-6. Never invent projects, metrics, clients, testimonials or credentials. Ask.
-7. State what was verified vs. not verified. Don't claim it works without running it.
-8. End of session: update `HANDOFF.md`, `SESSION_INDEX.md` status, `IMPLEMENTATION_PLAN.md` §8 log, and `DECISIONS.md` if anything was decided.
 
-## Key files
-`docs/implementation/` → `AUDIT.md`, `IMPLEMENTATION_PLAN.md`, `DECISIONS.md`, `HANDOFF.md`, `SESSION_INDEX.md`, `SESSION_TEMPLATE.md`, `sessions/NN-*.md`
+1. Read only: this file, `SESSION_INDEX.md`, your session file, the DECISIONS IDs it lists, and the code it lists. **Do not redo the audit.**
+2. Inspect code before changing it. Preserve the features in PLAN §3 unless a decision retires them.
+3. Work on `feature/NN-slug`, in small commits. **Never push, open PRs, change repository visibility, publish releases or pick a licence without the owner's explicit approval.**
+4. Escape late. Every string is translatable (`abuobaida`). Templates never call `get_field()` or `pll_*()` directly; use `inc/content.php` and `inc/i18n.php`.
+5. CSS uses logical properties and `theme.json` tokens only. Content is never hidden without JS. No motion the visitor didn't trigger.
+6. **Never invent** projects, clients, metrics, testimonials or credentials. Use visible `[placeholders]` and ask.
+7. Verify by running (TEST_STRATEGY §4, definition of done). Report what was and wasn't verified.
+8. At the end, update `HANDOFF.md`, `SESSION_INDEX.md`, PLAN §11, and `DECISIONS.md` if anything was decided.
+
+## Docs map (`docs/implementation/`)
+
+| File | Read when |
+|---|---|
+| `IMPLEMENTATION_PLAN.md` | Scope, gates, dependencies, risks |
+| `DECISIONS.md` | Before choosing anything |
+| `ARCHITECTURE.md` | Any code session |
+| `MULTILINGUAL.md` | Anything that touches text, layout or URLs |
+| `CONTENT_STRATEGY.md` | Homepage, About, projects |
+| `DESIGN_BRIEF.md` | Any UI session |
+| `TEST_STRATEGY.md` + `qa/` | Verifying, or setting up the local environment |
+| `AUDIT.md` | Only to look up a cited finding |

@@ -1,0 +1,952 @@
+{
+  "home": {
+    "url": "http://localhost:8080/",
+    "widths": {
+      "375": {
+        "horizontalOverflow": false,
+        "scrollWidth": 375,
+        "pageHeight": 6275,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "768": {
+        "horizontalOverflow": false,
+        "scrollWidth": 768,
+        "pageHeight": 5819,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "1280": {
+        "horizontalOverflow": false,
+        "scrollWidth": 1280,
+        "pageHeight": 4683,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "1920": {
+        "horizontalOverflow": false,
+        "scrollWidth": 1920,
+        "pageHeight": 4611,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      }
+    },
+    "requests": {
+      "total": 28,
+      "external": 8,
+      "externalHosts": [
+        "fonts.googleapis.com",
+        "abuobaida.sd",
+        "www.google.com"
+      ],
+      "byType": {
+        "document": {
+          "count": 1,
+          "bytes": 43104
+        },
+        "stylesheet": {
+          "count": 8,
+          "bytes": 364026
+        },
+        "font": {
+          "count": 2,
+          "bytes": 183788
+        },
+        "script": {
+          "count": 16,
+          "bytes": 444012
+        },
+        "fetch": {
+          "count": 1,
+          "bytes": 788
+        }
+      },
+      "totalBytes": 1035718
+    },
+    "axe": [
+      {
+        "id": "duplicate-id",
+        "impact": "minor",
+        "nodes": 1,
+        "help": "id attribute value must be unique",
+        "sample": [
+          "main:nth-child(4)"
+        ]
+      },
+      {
+        "id": "frame-title",
+        "impact": "serious",
+        "nodes": 1,
+        "help": "Frames must have title attribute",
+        "sample": [
+          "iframe"
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 2,
+        "help": "Heading levels should only increase by one",
+        "sample": [
+          ".wp-block-cb-slide.swiper-slide:nth-child(1) > .testimonial-item > h4",
+          ".address > h4"
+        ]
+      },
+      {
+        "id": "landmark-no-duplicate-main",
+        "impact": "moderate",
+        "nodes": 1,
+        "help": "Document must not have more than one main landmark",
+        "sample": [
+          "main:nth-child(4)"
+        ]
+      },
+      {
+        "id": "landmark-unique",
+        "impact": "moderate",
+        "nodes": 1,
+        "help": "Ensures landmarks are unique",
+        "sample": [
+          "main:nth-child(4)"
+        ]
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "nodes": 5,
+        "help": "Links must have discernible text",
+        "sample": [
+          ".twitter",
+          ".facebook",
+          ".instagram"
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "help": "All page content must be contained by landmarks",
+        "sample": [
+          "#hero"
+        ]
+      }
+    ],
+    "mobileToggle": {
+      "tag": "I",
+      "tabIndex": -1,
+      "role": null,
+      "name": ""
+    },
+    "first12TabStops": [
+      "A:Abuobaida Mustafa",
+      "A.twitter:",
+      "A.facebook:",
+      "A.instagram:",
+      "A.google-plus:",
+      "A.linkedin:",
+      "A.nav-link:Home",
+      "A.nav-link:About",
+      "A.nav-link:Portfolio",
+      "A.nav-link:Contact",
+      "A.nav-link:Download Resume",
+      "A.portfolio-lightbox:"
+    ],
+    "structure": {
+      "lang": "en",
+      "dir": null,
+      "h1": [
+        "Abuobaida Mustafa",
+        "Abuobaida Mustafa"
+      ],
+      "headings": "H1 H1 H2 H3 H2 H2 H2 H4 H4 H4 H2 H4 H4 H4",
+      "imgsNoAlt": 11,
+      "imgs": 11,
+      "emptyHashLinks": 6,
+      "duplicateIds": [
+        "main×2"
+      ],
+      "landmarks": {
+        "header": 1,
+        "nav": 1,
+        "main": 2,
+        "footer": 1
+      },
+      "stylesheets": [
+        "/css",
+        "/wp-content/plugins/contact-form-7/includes/css/styles.css",
+        "/wp-content/themes/abuobaida/style.css",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap-icons/bootstrap-icons.css",
+        "/wp-content/themes/abuobaida/assets/vendor/boxicons/css/boxicons.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/css/glightbox.min.css",
+        "/wp-content/themes/abuobaida/assets/css/style.css"
+      ],
+      "scripts": [
+        "/wp-includes/js/wp-emoji-release.min.js",
+        "/wp-includes/js/dist/hooks.min.js",
+        "/wp-includes/js/dist/i18n.min.js",
+        "/wp-content/plugins/contact-form-7/includes/swv/js/index.js",
+        "/wp-content/plugins/contact-form-7/includes/js/index.js",
+        "/wp-content/themes/abuobaida/js/navigation.js",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.js",
+        "/wp-content/themes/abuobaida/assets/vendor//bootstrap/js/bootstrap.bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/js/glightbox.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/php-email-form/validate.js",
+        "/wp-content/themes/abuobaida/assets/vendor/purecounter/purecounter.js",
+        "/wp-content/themes/abuobaida/assets/vendor/swiper/swiper-bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/typed.js/typed.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/waypoints/noframework.waypoints.js",
+        "/wp-content/themes/abuobaida/assets/js/main.js"
+      ]
+    }
+  },
+  "post": {
+    "url": "http://localhost:8080/template-sticky/",
+    "widths": {
+      "375": {
+        "horizontalOverflow": false,
+        "scrollWidth": 375,
+        "pageHeight": 4660,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "1280": {
+        "horizontalOverflow": false,
+        "scrollWidth": 1280,
+        "pageHeight": 4019,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      }
+    },
+    "requests": {
+      "total": 25,
+      "external": 1,
+      "externalHosts": [
+        "fonts.googleapis.com"
+      ],
+      "byType": {
+        "document": {
+          "count": 1,
+          "bytes": 48951
+        },
+        "stylesheet": {
+          "count": 8,
+          "bytes": 364026
+        },
+        "script": {
+          "count": 16,
+          "bytes": 444012
+        }
+      },
+      "totalBytes": 856989
+    },
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 119,
+        "help": "Elements must have sufficient color contrast",
+        "sample": [
+          "time",
+          ".url",
+          "a[target=\"_blank\"]"
+        ]
+      }
+    ],
+    "structure": {
+      "lang": "en-US",
+      "dir": null,
+      "h1": [
+        "Template: Sticky"
+      ],
+      "headings": "H1 H2 H2 H2 H2 H2",
+      "imgsNoAlt": 0,
+      "imgs": 0,
+      "emptyHashLinks": 0,
+      "duplicateIds": [],
+      "landmarks": {
+        "header": 1,
+        "nav": 1,
+        "main": 1,
+        "footer": 7
+      },
+      "stylesheets": [
+        "/wp-content/plugins/contact-form-7/includes/css/styles.css",
+        "/wp-content/themes/abuobaida/style.css",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap-icons/bootstrap-icons.css",
+        "/wp-content/themes/abuobaida/assets/vendor/boxicons/css/boxicons.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/css/glightbox.min.css",
+        "/wp-content/themes/abuobaida/assets/css/style.css"
+      ],
+      "scripts": [
+        "/wp-includes/js/wp-emoji-release.min.js",
+        "/wp-includes/js/dist/hooks.min.js",
+        "/wp-includes/js/dist/i18n.min.js",
+        "/wp-content/plugins/contact-form-7/includes/swv/js/index.js",
+        "/wp-content/plugins/contact-form-7/includes/js/index.js",
+        "/wp-content/themes/abuobaida/js/navigation.js",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.js",
+        "/wp-content/themes/abuobaida/assets/vendor//bootstrap/js/bootstrap.bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/js/glightbox.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/php-email-form/validate.js",
+        "/wp-content/themes/abuobaida/assets/vendor/purecounter/purecounter.js",
+        "/wp-content/themes/abuobaida/assets/vendor/swiper/swiper-bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/typed.js/typed.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/waypoints/noframework.waypoints.js",
+        "/wp-content/themes/abuobaida/assets/js/main.js"
+      ]
+    }
+  },
+  "page": {
+    "url": "http://localhost:8080/about/",
+    "widths": {
+      "375": {
+        "horizontalOverflow": false,
+        "scrollWidth": 375,
+        "pageHeight": 4471,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "1280": {
+        "horizontalOverflow": false,
+        "scrollWidth": 1280,
+        "pageHeight": 3905,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      }
+    },
+    "requests": {
+      "total": 25,
+      "external": 1,
+      "externalHosts": [
+        "fonts.googleapis.com"
+      ],
+      "byType": {
+        "document": {
+          "count": 1,
+          "bytes": 47625
+        },
+        "stylesheet": {
+          "count": 8,
+          "bytes": 364026
+        },
+        "script": {
+          "count": 16,
+          "bytes": 444012
+        }
+      },
+      "totalBytes": 855663
+    },
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 113,
+        "help": "Elements must have sufficient color contrast",
+        "sample": [
+          "ol > li:nth-child(1) > a",
+          "ol > li:nth-child(2) > a",
+          "ol > li:nth-child(3) > a"
+        ]
+      }
+    ],
+    "structure": {
+      "lang": "en-US",
+      "dir": null,
+      "h1": [
+        "About The Tests"
+      ],
+      "headings": "H1 H2 H2 H2 H2 H2",
+      "imgsNoAlt": 0,
+      "imgs": 0,
+      "emptyHashLinks": 0,
+      "duplicateIds": [],
+      "landmarks": {
+        "header": 1,
+        "nav": 0,
+        "main": 1,
+        "footer": 6
+      },
+      "stylesheets": [
+        "/wp-content/plugins/contact-form-7/includes/css/styles.css",
+        "/wp-content/themes/abuobaida/style.css",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap-icons/bootstrap-icons.css",
+        "/wp-content/themes/abuobaida/assets/vendor/boxicons/css/boxicons.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/css/glightbox.min.css",
+        "/wp-content/themes/abuobaida/assets/css/style.css"
+      ],
+      "scripts": [
+        "/wp-includes/js/wp-emoji-release.min.js",
+        "/wp-includes/js/dist/hooks.min.js",
+        "/wp-includes/js/dist/i18n.min.js",
+        "/wp-content/plugins/contact-form-7/includes/swv/js/index.js",
+        "/wp-content/plugins/contact-form-7/includes/js/index.js",
+        "/wp-content/themes/abuobaida/js/navigation.js",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.js",
+        "/wp-content/themes/abuobaida/assets/vendor//bootstrap/js/bootstrap.bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/js/glightbox.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/php-email-form/validate.js",
+        "/wp-content/themes/abuobaida/assets/vendor/purecounter/purecounter.js",
+        "/wp-content/themes/abuobaida/assets/vendor/swiper/swiper-bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/typed.js/typed.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/waypoints/noframework.waypoints.js",
+        "/wp-content/themes/abuobaida/assets/js/main.js"
+      ]
+    }
+  },
+  "archive": {
+    "url": "http://localhost:8080/category/6-1/",
+    "widths": {
+      "375": {
+        "horizontalOverflow": false,
+        "scrollWidth": 375,
+        "pageHeight": 29038,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "1280": {
+        "horizontalOverflow": false,
+        "scrollWidth": 1280,
+        "pageHeight": 25359,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      }
+    },
+    "requests": {
+      "total": 33,
+      "external": 22,
+      "externalHosts": [
+        "wpthemetestdata.files.wordpress.com",
+        "secure.gravatar.com",
+        "upload.wikimedia.org",
+        "fonts.googleapis.com"
+      ],
+      "byType": {
+        "document": {
+          "count": 1,
+          "bytes": 198389
+        },
+        "stylesheet": {
+          "count": 13,
+          "bytes": 441971
+        },
+        "script": {
+          "count": 19,
+          "bytes": 490101
+        }
+      },
+      "totalBytes": 1130461
+    },
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 333,
+        "help": "Elements must have sufficient color contrast",
+        "sample": [
+          ".entry-date.published[datetime=\"\\32 023-01-16T07\\:08\\:31\\+00\\:00\"]",
+          "#post-163 > .entry-header > .entry-meta > .byline > .author.vcard > .url.fn.n",
+          "#post-163 > .entry-footer > .cat-links > a[rel=\"category\\ tag\"]:nth-child(1)"
+        ]
+      },
+      {
+        "id": "duplicate-id-active",
+        "impact": "serious",
+        "nodes": 1,
+        "help": "IDs of active elements must be unique",
+        "sample": [
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form > .comment-form[method=\"post\"] > .form-submit > .submit[name=\"submit\"][value=\"Post\\ Comment\"]"
+        ]
+      },
+      {
+        "id": "duplicate-id-aria",
+        "impact": "critical",
+        "nodes": 6,
+        "help": "IDs used in ARIA and labels must be unique",
+        "sample": [
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form > .comment-form[method=\"post\"] > .comment-notes > span:nth-child(1)",
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form > .comment-form[method=\"post\"] > .comment-form-comment > textarea",
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form > .comment-form[method=\"post\"] > .comment-form-author > input[name=\"author\"][type=\"text\"][maxlength=\"\\32 45\"]"
+        ]
+      },
+      {
+        "id": "duplicate-id",
+        "impact": "minor",
+        "nodes": 6,
+        "help": "id attribute value must be unique",
+        "sample": [
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form",
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form > .comment-reply-title",
+          ".wp-block-comments > .comment-respond.wp-block-post-comments-form > .comment-reply-title > small > a[href$=\"\\36 -1\\/\\#respond\"][rel=\"nofollow\"]"
+        ]
+      },
+      {
+        "id": "landmark-unique",
+        "impact": "moderate",
+        "nodes": 1,
+        "help": "Ensures landmarks are unique",
+        "sample": [
+          ".wp-block-query.wp-block-query-is-layout-flow.is-layout-flow:nth-child(9) > .wp-block-query-pagination.wp-block-query-pagination-is-layout-flex[aria-label=\"Pagination\"]"
+        ]
+      },
+      {
+        "id": "list",
+        "impact": "serious",
+        "nodes": 1,
+        "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+        "sample": [
+          ".wp-block-navigation__container"
+        ]
+      },
+      {
+        "id": "role-img-alt",
+        "impact": "serious",
+        "nodes": 3,
+        "help": "[role='img'] elements have an alternative text",
+        "sample": [
+          ".wp-image-761.has-parallax[role=\"img\"]",
+          ".is-light.is-repeated.wp-block-cover:nth-child(11) > .wp-image-1025.is-repeated[role=\"img\"]",
+          ".wp-image-1025.has-parallax[role=\"img\"]"
+        ]
+      },
+      {
+        "id": "scrollable-region-focusable",
+        "impact": "moderate",
+        "nodes": 4,
+        "help": "Ensure that scrollable region has keyboard access",
+        "sample": [
+          ".size-large.wp-block-image:nth-child(1) > figcaption",
+          ".size-full.wp-block-image:nth-child(2) > figcaption",
+          ".size-large.wp-block-image:nth-child(3) > figcaption"
+        ]
+      }
+    ],
+    "structure": {
+      "lang": "en-US",
+      "dir": null,
+      "h1": [
+        "Category: 6.1",
+        "Abuobaida Mustafa",
+        "Category: 6.1",
+        "H1 Heading"
+      ],
+      "headings": "H1 H2 H2 H2 H2 H2 H2 H2 H1 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H2 H3 H3 H1 H2 H2 H2 H2 H1 H2 H3 H4 H5 H6 H2 H2 H2 H2",
+      "imgsNoAlt": 6,
+      "imgs": 26,
+      "emptyHashLinks": 3,
+      "duplicateIds": [
+        "respond×2",
+        "reply-title×2",
+        "cancel-comment-reply-link×2",
+        "commentform×2",
+        "email-notes×2",
+        "comment×2",
+        "author×2",
+        "email×2",
+        "url×2",
+        "wp-comment-cookies-consent×2",
+        "submit×2",
+        "comment_post_ID×2",
+        "comment_parent×2"
+      ],
+      "landmarks": {
+        "header": 8,
+        "nav": 6,
+        "main": 1,
+        "footer": 18
+      },
+      "stylesheets": [
+        "/wp-includes/blocks/cover/style.min.css",
+        "/wp-includes/blocks/gallery/style.min.css",
+        "/wp-includes/blocks/image/style.min.css",
+        "/wp-includes/blocks/navigation/style.min.css",
+        "/wp-includes/blocks/social-links/style.min.css",
+        "/wp-content/plugins/contact-form-7/includes/css/styles.css",
+        "/wp-content/themes/abuobaida/style.css",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap-icons/bootstrap-icons.css",
+        "/wp-content/themes/abuobaida/assets/vendor/boxicons/css/boxicons.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/css/glightbox.min.css",
+        "/wp-content/themes/abuobaida/assets/css/style.css"
+      ],
+      "scripts": [
+        "/wp-includes/js/wp-emoji-release.min.js",
+        "/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js",
+        "/wp-includes/js/dist/hooks.min.js",
+        "/wp-includes/js/dist/i18n.min.js",
+        "/wp-content/plugins/contact-form-7/includes/swv/js/index.js",
+        "/wp-content/plugins/contact-form-7/includes/js/index.js",
+        "/wp-content/themes/abuobaida/js/navigation.js",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.js",
+        "/wp-content/themes/abuobaida/assets/vendor//bootstrap/js/bootstrap.bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/js/glightbox.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/php-email-form/validate.js",
+        "/wp-content/themes/abuobaida/assets/vendor/purecounter/purecounter.js",
+        "/wp-content/themes/abuobaida/assets/vendor/swiper/swiper-bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/typed.js/typed.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/waypoints/noframework.waypoints.js",
+        "/wp-content/themes/abuobaida/assets/js/main.js",
+        "/wp-includes/js/comment-reply.min.js"
+      ]
+    }
+  },
+  "search": {
+    "url": "http://localhost:8080/?s=hello",
+    "widths": {
+      "375": {
+        "horizontalOverflow": false,
+        "scrollWidth": 375,
+        "pageHeight": 4359,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      },
+      "1280": {
+        "horizontalOverflow": false,
+        "scrollWidth": 1280,
+        "pageHeight": 4048,
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": []
+      }
+    },
+    "requests": {
+      "total": 25,
+      "external": 1,
+      "externalHosts": [
+        "fonts.googleapis.com"
+      ],
+      "byType": {
+        "document": {
+          "count": 1,
+          "bytes": 55697
+        },
+        "stylesheet": {
+          "count": 8,
+          "bytes": 364026
+        },
+        "script": {
+          "count": 16,
+          "bytes": 444012
+        }
+      },
+      "totalBytes": 863735
+    },
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 118,
+        "help": "Elements must have sufficient color contrast",
+        "sample": [
+          "time[datetime=\"\\32 026-10-14T10\\:56\\:07\\+00\\:00\"]",
+          "#post-1 > .entry-header > .entry-meta > .byline > .author.vcard > .url.fn.n",
+          "#post-1 > .entry-footer > .cat-links > a[rel=\"category\\ tag\"]"
+        ]
+      }
+    ],
+    "structure": {
+      "lang": "en-US",
+      "dir": null,
+      "h1": [
+        "Search Results for: hello"
+      ],
+      "headings": "H1 H2 H2 H2 H2 H2 H2",
+      "imgsNoAlt": 0,
+      "imgs": 0,
+      "emptyHashLinks": 0,
+      "duplicateIds": [],
+      "landmarks": {
+        "header": 3,
+        "nav": 0,
+        "main": 1,
+        "footer": 8
+      },
+      "stylesheets": [
+        "/wp-content/plugins/contact-form-7/includes/css/styles.css",
+        "/wp-content/themes/abuobaida/style.css",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap-icons/bootstrap-icons.css",
+        "/wp-content/themes/abuobaida/assets/vendor/boxicons/css/boxicons.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/css/glightbox.min.css",
+        "/wp-content/themes/abuobaida/assets/css/style.css"
+      ],
+      "scripts": [
+        "/wp-includes/js/wp-emoji-release.min.js",
+        "/wp-includes/js/dist/hooks.min.js",
+        "/wp-includes/js/dist/i18n.min.js",
+        "/wp-content/plugins/contact-form-7/includes/swv/js/index.js",
+        "/wp-content/plugins/contact-form-7/includes/js/index.js",
+        "/wp-content/themes/abuobaida/js/navigation.js",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.js",
+        "/wp-content/themes/abuobaida/assets/vendor//bootstrap/js/bootstrap.bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/js/glightbox.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/php-email-form/validate.js",
+        "/wp-content/themes/abuobaida/assets/vendor/purecounter/purecounter.js",
+        "/wp-content/themes/abuobaida/assets/vendor/swiper/swiper-bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/typed.js/typed.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/waypoints/noframework.waypoints.js",
+        "/wp-content/themes/abuobaida/assets/js/main.js"
+      ]
+    }
+  },
+  "notfound": {
+    "url": "http://localhost:8080/does-not-exist/",
+    "widths": {
+      "375": {
+        "horizontalOverflow": false,
+        "scrollWidth": 375,
+        "pageHeight": 900,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": [
+          "http://localhost:8080/does-not-exist/"
+        ]
+      },
+      "1280": {
+        "horizontalOverflow": true,
+        "scrollWidth": 1580,
+        "pageHeight": 900,
+        "consoleErrors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "pageErrors": [],
+        "failedLocal": [],
+        "notFound": [
+          "http://localhost:8080/does-not-exist/"
+        ]
+      }
+    },
+    "requests": {
+      "total": 28,
+      "external": 5,
+      "externalHosts": [
+        "fonts.googleapis.com",
+        "abuobaida.sd",
+        "media.giphy.com"
+      ],
+      "byType": {
+        "document": {
+          "count": 1,
+          "bytes": 27210
+        },
+        "stylesheet": {
+          "count": 9,
+          "bytes": 366337
+        },
+        "script": {
+          "count": 16,
+          "bytes": 444012
+        },
+        "font": {
+          "count": 2,
+          "bytes": 183788
+        }
+      },
+      "totalBytes": 1021347
+    },
+    "axe": [
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "nodes": 5,
+        "help": "Links must have discernible text",
+        "sample": [
+          ".twitter",
+          ".facebook",
+          ".instagram"
+        ]
+      }
+    ],
+    "structure": {
+      "lang": "en",
+      "dir": null,
+      "h1": [
+        "Abuobaida Mustafa",
+        "Error 404"
+      ],
+      "headings": "H1 H1",
+      "imgsNoAlt": 1,
+      "imgs": 1,
+      "emptyHashLinks": 6,
+      "duplicateIds": [],
+      "landmarks": {
+        "header": 1,
+        "nav": 1,
+        "main": 1,
+        "footer": 1
+      },
+      "stylesheets": [
+        "/css",
+        "/wp-content/plugins/contact-form-7/includes/css/styles.css",
+        "/wp-content/themes/abuobaida/style.css",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/bootstrap-icons/bootstrap-icons.css",
+        "/wp-content/themes/abuobaida/assets/vendor/boxicons/css/boxicons.min.css",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/css/glightbox.min.css",
+        "/wp-content/themes/abuobaida/assets/css/style.css",
+        "/wp-content/themes/abuobaida/assets/css/404.css"
+      ],
+      "scripts": [
+        "/wp-includes/js/wp-emoji-release.min.js",
+        "/wp-includes/js/dist/hooks.min.js",
+        "/wp-includes/js/dist/i18n.min.js",
+        "/wp-content/plugins/contact-form-7/includes/swv/js/index.js",
+        "/wp-content/plugins/contact-form-7/includes/js/index.js",
+        "/wp-content/themes/abuobaida/js/navigation.js",
+        "/wp-content/themes/abuobaida/assets/vendor/aos/aos.js",
+        "/wp-content/themes/abuobaida/assets/vendor//bootstrap/js/bootstrap.bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/glightbox/js/glightbox.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/php-email-form/validate.js",
+        "/wp-content/themes/abuobaida/assets/vendor/purecounter/purecounter.js",
+        "/wp-content/themes/abuobaida/assets/vendor/swiper/swiper-bundle.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/typed.js/typed.min.js",
+        "/wp-content/themes/abuobaida/assets/vendor/waypoints/noframework.waypoints.js",
+        "/wp-content/themes/abuobaida/assets/js/main.js"
+      ]
+    }
+  },
+  "reducedMotion": {
+    "aosElements": 9,
+    "typedRunning": true,
+    "hiddenBelowFold": 8
+  }
+}

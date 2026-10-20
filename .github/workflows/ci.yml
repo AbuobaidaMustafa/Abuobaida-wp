@@ -1,6 +1,6 @@
 # Checks that run on every push and pull request.
-# The gate is "no new violations": the full PHPCS report is informational until
-# the v1 template code is replaced (see docs/implementation/TEST_STRATEGY.md).
+# Since 1.0.1 the whole theme passes PHPCS, so the full run is a gate; the
+# changed-lines check gives a short report focused on the branch's own edits.
 name: CI
 
 on:
@@ -50,9 +50,9 @@ jobs:
           tools: composer:v2
       - name: Install dev tools
         run: composer install --no-interaction --no-progress
-      - name: PHPCS on changed lines (gate)
+      - name: PHPCS on changed lines
         run: python3 tools/qa/phpcs-changed.py "origin/${{ github.base_ref || 'master' }}"
-      - name: Full PHPCS summary (informational)
-        run: vendor/bin/phpcs --report=summary || true
+      - name: PHPCS, whole theme (gate)
+        run: vendor/bin/phpcs
       - name: Logical CSS properties (gate)
         run: tools/qa/check-logical-css.sh

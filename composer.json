@@ -34,7 +34,7 @@
   "scripts": {
     "lint": [
       "@lint:php",
-      "@lint:changed",
+      "@lint:wpcs",
       "@lint:css"
     ],
     "lint:php": "parallel-lint --exclude .git --exclude vendor --exclude node_modules .",
@@ -45,10 +45,10 @@
     "make-pot": "wp i18n make-pot . languages/abuobaida.pot --exclude=docs,tools,vendor,node_modules,assets/vendor"
   },
   "scripts-descriptions": {
-    "lint": "Syntax check, PHPCS on changed lines, logical-CSS check (the CI gate).",
+    "lint": "Syntax check, PHPCS on the whole theme, logical-CSS check (the CI gate).",
     "lint:php": "PHP syntax check of every file.",
     "lint:changed": "PHPCS errors on lines changed since origin/master (no new violations).",
-    "lint:wpcs": "Full PHPCS report, including legacy v1 violations.",
+    "lint:wpcs": "PHPCS on the whole theme (clean since 1.0.1).",
     "lint:css": "Fail on physical left/right CSS properties (RTL safety).",
     "fix:wpcs": "Auto-fix PHPCS formatting (use on new code, not on legacy v1 files).",
     "make-pot": "Regenerate languages/abuobaida.pot."

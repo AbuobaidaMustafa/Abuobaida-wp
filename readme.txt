@@ -5,7 +5,7 @@ Tags: portfolio, one-column, custom-logo, custom-menu, featured-images, threaded
 Requires at least: 5.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -24,6 +24,14 @@ Recommended plugins for version 1: Advanced Custom Fields (About and Contact fie
 3. Click Activate.
 
 == Changelog ==
+
+= 1.0.1 =
+* One valid HTML document on every page; posts, pages, archives and search get the site sidebar and footer.
+* Works without Advanced Custom Fields (homepage fields are read from post meta); no warnings when fields are empty.
+* Homepage content is visible without JavaScript; animations respect the reduced-motion setting.
+* Keyboard-operable mobile menu button, named icon links, visible focus, titled map frame, one main landmark.
+* Upload links follow the site's own address (no hard-coded http://abuobaida.sd); favicons fixed on every page.
+* Customizer: social profile URLs and the Contact Form 7 form ID.
 
 = 1.0.0 – 2021 =
 * Initial version: Underscores base with a one-page portfolio homepage.

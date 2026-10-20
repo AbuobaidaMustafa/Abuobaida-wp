@@ -10,7 +10,7 @@ Everything needed to run, check and package the theme locally. None of it ships 
 | `local-env/baseline-acf-fields.php` | The v1 ACF field groups `about` and `contact_us`, inferred from `page-home.php` (mu-plugin). Only the v1 baseline needs ACF; v2 doesn't (D-27). |
 | `qa/measure.js` | Screenshots at several widths, request and byte counts, axe violations, structure facts, tab order and the reduced-motion check. Writes `report.json` and PNGs. |
 | `qa/nojs.js` | Renders a page with JavaScript disabled and reports what stays hidden. |
-| `qa/phpcs-changed.py` | **Gate:** PHPCS errors on lines changed since `origin/master`. "No new violations" while v1 code still carries legacy ones. |
+| `qa/phpcs-changed.py` | PHPCS errors on lines changed since `origin/master`: a short report of the branch's own edits. (The whole theme has passed PHPCS since 1.0.1, so the full run is the CI gate.) |
 | `qa/check-logical-css.sh` | **Gate:** fails on physical `left`/`right` CSS (RTL safety). v1 stylesheets are listed in `qa/logical-css-legacy.txt` until v2 replaces them. |
 | `qa/get-checkers.sh` | Installs PHPCS + WPCS + PHPCompatibility from GitHub where Composer can't reach Packagist. |
 | `build-zip.sh` | Builds `dist/abuobaida-<version>.zip` from a git ref, leaving out `.distignore` entries. |
@@ -25,8 +25,8 @@ php -S 127.0.0.1:8080 -t ~/wp-abuobaida/wp tools/local-env/router.php
 
 # Checks (what CI runs)
 composer install            # once; needs Packagist
-composer lint               # syntax + PHPCS on changed lines + logical CSS
-composer lint:wpcs          # full PHPCS report, legacy included (informational)
+composer lint               # syntax + PHPCS (whole theme) + logical CSS
+composer lint:changed       # PHPCS errors on lines changed since origin/master
 
 # Rendered checks
 npm install && npx playwright install chromium     # once

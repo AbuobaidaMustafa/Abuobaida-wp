@@ -1,8 +1,7 @@
 <?php
 /**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
+ * The footer for every template: copyright, back-to-top link and the closing
+ * of the document opened in header.php.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -11,24 +10,15 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'abuobaida' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'abuobaida' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'abuobaida' ), 'abuobaida', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+<footer id="footer">
+	<div class="container">
+		<div class="copyright">
+			&copy; <?php esc_html_e( 'Copyright', 'abuobaida' ); ?> <strong><span><?php esc_html_e( 'Abuobaida', 'abuobaida' ); ?></span></strong>
+		</div>
+	</div>
+</footer>
+<a href="#top" class="back-to-top d-flex align-items-center justify-content-center" aria-label="<?php esc_attr_e( 'Back to top', 'abuobaida' ); ?>"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
 <?php wp_footer(); ?>
-
 </body>
 </html>

@@ -32,7 +32,6 @@ if ( ! function_exists( 'abuobaida_posted_on' ) ) :
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -48,7 +47,6 @@ if ( ! function_exists( 'abuobaida_posted_by' ) ) :
 		);
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -153,13 +151,4 @@ if ( ! function_exists( 'abuobaida_post_thumbnail' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'wp_body_open' ) ) :
-	/**
-	 * Shim for sites older than 5.2.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12563
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
-	}
-endif;
+// The wp_body_open() shim for WordPress < 5.2 was removed in 1.0.1: the theme requires 5.3.

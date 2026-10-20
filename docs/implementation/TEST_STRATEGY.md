@@ -49,7 +49,7 @@ wp i18n make-pot . languages/abuobaida.pot && msgfmt --statistics languages/ar.p
 
 1. **Lint:** `php -l` is clean. PHPCS shows **0 errors in changed files**; warnings are justified in the handoff.
 2. **Runtime:** with `WP_DEBUG` on, rendering the touched templates in **en, ar and zh** adds no new lines to `debug.log`.
-3. **Degradation:** touched templates render without a fatal error when **ACF**, **Polylang**, **CF7** or **abuobaida-core** is deactivated, one at a time.
+3. **Degradation:** touched templates render without a fatal error when **Polylang**, **CF7** or **abuobaida-core** is deactivated, one at a time (and **ACF**, for v1 templates).
 4. **Screenshots** of the touched templates at **375 and 1280 px in en, ar and zh** are compared with the approved design (G1). Differences are listed.
 5. **Accessibility:**
    - axe shows **no serious or critical** violations on the touched templates;
@@ -66,7 +66,7 @@ wp i18n make-pot . languages/abuobaida.pot && msgfmt --statistics languages/ar.p
 |---|---|---|
 | PHP | Lint on 8.1, 8.3, 8.5 (CI). PHPCompatibility `8.1-`. Runtime on 8.3 (workspace). | Production PHP (Q-03) |
 | WordPress | 7.1.x (workspace). 6.6 smoke test before release (S16). | — |
-| Plugins | ACF free 6.8, CF7 6.2, Polylang 3.8. Each one off, one at a time. | Production plugin set (Q-03) |
+| Plugins | CF7 6.2, Polylang 3.8, abuobaida-core (ACF 6.8 only for the v1 baseline). Each one off, one at a time. | Production plugin set (Q-03) |
 | Browsers | Chromium | Safari (macOS/iOS), Firefox, Chrome on Android (owner) |
 | Assistive tech | axe, tab order | VoiceOver or NVDA on home, a case study and the menu, in en and ar (owner, S15) |
 | Viewports | 360, 375, 768, 1024, 1280, 1440, 1920 | Owner's phone |

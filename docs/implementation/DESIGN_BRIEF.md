@@ -3,7 +3,7 @@
 **Canvas:** *Portfolio Theme Pre-design* in Claude Design: <https://claude.ai/artifact/DF4jsBp8VwhkEZWAERxXzK>
 The link is private to the owner until shared from the page's Share menu.
 
-**Status:** awaiting owner review (Session 02). Decisions: D-18 (gate, confirmed), D-25 (direction, recommended), D-10, D-11, D-15.
+**Status:** direction **A chosen** by the owner on 2026-10-20 (D-25). Next: the full design set in S03, then approval gate G1. Decisions: D-18 (gate, confirmed), D-25 (direction, confirmed), D-10, D-11, D-15.
 
 ## 1. Brief
 

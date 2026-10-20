@@ -120,6 +120,8 @@ if [ "$WITH_POLYLANG" = 1 ]; then
 fi
 
 wp rewrite flush --quiet
+# Start with an empty log: CLI runs above log harmless update-check and HTTP_HOST notices.
+: > "$TARGET/debug.log"
 echo
 echo "Ready. Serve with:"
 echo "  php -S 127.0.0.1:$PORT -t \"$WPDIR\" \"$HERE/router.php\""

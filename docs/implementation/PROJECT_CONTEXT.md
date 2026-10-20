@@ -18,15 +18,15 @@
 ## Target (v2)
 
 - A classic theme with `theme.json` v3. No framework, no build step. Logical CSS only. Vanilla deferred JS.
-- A companion plugin `abuobaida-core`: `project` and `testimonial` post types, `project_type` (also the capabilities list) and `project_stack` taxonomies, ACF JSON. **Free ACF field types only** unless the owner has PRO.
+- A companion plugin `abuobaida-core`: `project` and `testimonial` post types, `project_type` (also the capabilities list) and `project_stack` taxonomies, native custom fields with meta boxes. **No ACF in v2** (D-27).
 - **Arabic (RTL), English (default, `/`) and Chinese (`/zh/`)** via Polylang free. The front page is `front-page.php`; slug templates don't work for translations.
-- Design: direction A "Survey" is recommended and **awaiting the owner's choice**. No UI code until gate **G1** (D-18). Canvas link in DESIGN_BRIEF.
+- Design: direction **A "Survey" chosen** (D-25). No UI code until the full design set passes gate **G1** in S03 (D-18). Canvas link in DESIGN_BRIEF.
 
 ## Rules for every session
 
 1. Read only: this file, `SESSION_INDEX.md`, your session file, the DECISIONS IDs it lists, and the code it lists. **Do not redo the audit.**
 2. Inspect code before changing it. Preserve the features in PLAN §3 unless a decision retires them.
-3. Work on `feature/NN-slug`, in small commits. **Never push, open PRs, change repository visibility, publish releases or pick a licence without the owner's explicit approval.**
+3. Work on `feature/NN-slug`, in small commits, and push that branch to GitHub for review (D-28). **Never push to `master` or `main`, force-push, open releases, change repository visibility or pick a licence without the owner's explicit approval.**
 4. Escape late. Every string is translatable (`abuobaida`). Templates never call `get_field()` or `pll_*()` directly; use `inc/content.php` and `inc/i18n.php`.
 5. CSS uses logical properties and `theme.json` tokens only. Content is never hidden without JS. No motion the visitor didn't trigger.
 6. **Never invent** projects, clients, metrics, testimonials or credentials. Use visible `[placeholders]` and ask.

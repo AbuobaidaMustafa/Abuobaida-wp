@@ -14,7 +14,7 @@ Bring the live site's real configuration and the owner's content into the repo, 
 
 - PROJECT_CONTEXT.md
 - CONTENT_STRATEGY.md §7–8
-- DECISIONS.md Q-02, Q-03, Q-04, Q-08, Q-09, Q-12
+- DECISIONS.md Q-02, Q-03, Q-04, Q-09, Q-12, D-27
 - tools/local-env/baseline-acf-fields.php
 
 ## Prerequisites
@@ -24,7 +24,7 @@ Bring the live site's real configuration and the owner's content into the repo, 
 ## Scope
 
 - Save the real ACF field groups to `docs/content/acf-export/` and diff them against the inferred groups; replace `baseline-acf-fields.php` with the real definitions
-- Record hosting facts and the plugin list in DECISIONS (close Q-03 and Q-08); confirm or adjust D-13
+- Record hosting facts and the plugin list in DECISIONS (close Q-03); confirm or adjust D-13
 - Write `docs/content/projects.md` (owner facts only), `docs/content/profile.md` (bio, experience, education) and `docs/content/permissions.md` (reviews, client names, photos)
 - If a WXR export is supplied: import it into the local environment and re-run `tools/qa/measure.js` on real content; note the differences from the S00 baseline
 - Flag content gaps against gate G2

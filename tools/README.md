@@ -1,35 +1,55 @@
-# QA tooling (reference copies)
+# Development tools
 
-These are the exact scripts used for the S00 baseline. Session 04 moves them to `tools/` and adds composer and npm scripts. Until then, run them from here.
+Everything needed to run, check and package the theme locally. None of it ships in the theme zip (`.distignore`).
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
-| `local-env/setup.sh` | Local WordPress 7.1.3 + SQLite + ACF + CF7 (+ Polylang, + theme unit test data) from GitHub only. Tested from scratch in S00. |
-| `local-env/router.php` | Router for `php -S` so pretty permalinks work. |
-| `local-env/seed.php` | Recreates the current homepage content from the owner's screenshots, with placeholders for personal details. Also creates CF7 form #138. |
-| `local-env/baseline-acf-fields.php` | The ACF field groups `about` and `contact_us`, **inferred from `page-home.php`**. Replace them with the real export (Q-04). |
-| `measure.js` | Screenshots, request and byte counts, axe violations, structure facts, tab order and the reduced-motion check. Output is `report.json` plus PNGs. |
-| `nojs.js` | Renders a page with JavaScript disabled and reports the opacity of animated elements. |
+| `local-env/setup.sh` | Local WordPress (7.1.3 by default) + SQLite + ACF + Contact Form 7, plus optional Polylang and the theme unit test data. Everything is fetched from GitHub, so it also works where Packagist and npm are blocked. The theme is symlinked from this repository. |
+| `local-env/router.php` | Router for `php -S`, so pretty permalinks work. |
+| `local-env/seed.php` | Recreates the v1 homepage content from the owner's screenshots (personal details replaced with placeholders) and CF7 form #138. |
+| `local-env/baseline-acf-fields.php` | The v1 ACF field groups `about` and `contact_us`, inferred from `page-home.php` (mu-plugin). Only the v1 baseline needs ACF; v2 doesn't (D-27). |
+| `qa/measure.js` | Screenshots at several widths, request and byte counts, axe violations, structure facts, tab order and the reduced-motion check. Writes `report.json` and PNGs. |
+| `qa/nojs.js` | Renders a page with JavaScript disabled and reports what stays hidden. |
+| `qa/phpcs-changed.py` | **Gate:** PHPCS errors on lines changed since `origin/master`. "No new violations" while v1 code still carries legacy ones. |
+| `qa/check-logical-css.sh` | **Gate:** fails on physical `left`/`right` CSS (RTL safety). v1 stylesheets are listed in `qa/logical-css-legacy.txt` until v2 replaces them. |
+| `qa/get-checkers.sh` | Installs PHPCS + WPCS + PHPCompatibility from GitHub where Composer can't reach Packagist. |
+| `build-zip.sh` | Builds `dist/abuobaida-<version>.zip` from a git ref, leaving out `.distignore` entries. |
 
-## Getting the checkers where Packagist and npm are blocked
+## Everyday commands
 
 ```bash
-# PHPCS + WordPress Coding Standards + PHPCompatibility, from GitHub
-mkdir -p ~/phpcs && cd ~/phpcs
-for spec in "PHPCSStandards/PHP_CodeSniffer 3.13.6" "WordPress/WordPress-Coding-Standards 3.4.1" \
-            "PHPCSStandards/PHPCSUtils 1.2.3" "PHPCSStandards/PHPCSExtra 1.5.1" \
-            "PHPCompatibility/PHPCompatibility 9.3.5" "PHPCompatibility/PHPCompatibilityWP 2.1.8" \
-            "PHPCompatibility/PHPCompatibilityParagonie 1.3.4"; do
-  set -- $spec; git clone -q --depth 1 --branch "$2" "https://github.com/$1.git" "$(basename "$1")"
-done
-P=$PWD; php PHP_CodeSniffer/bin/phpcs --config-set installed_paths \
-  $P/WordPress-Coding-Standards,$P/PHPCSUtils,$P/PHPCSExtra,$P/PHPCompatibility,$P/PHPCompatibilityWP,$P/PHPCompatibilityParagonie
+# Local WordPress
+tools/local-env/setup.sh ~/wp-abuobaida [--polylang] [--test-data]
+php -S 127.0.0.1:8080 -t ~/wp-abuobaida/wp tools/local-env/router.php
+# admin / admin at http://localhost:8080/wp-admin; PHP notices go to ~/wp-abuobaida/debug.log
 
-# axe-core: prefer `npm i axe-core` (4.x). Without npm, an older 3.5.3 bundle ships
-# in Deque's Java repository:
+# Checks (what CI runs)
+composer install            # once; needs Packagist
+composer lint               # syntax + PHPCS on changed lines + logical CSS
+composer lint:wpcs          # full PHPCS report, legacy included (informational)
+
+# Rendered checks
+npm install && npx playwright install chromium     # once
+npm run qa:measure -- out/ home=http://localhost:8080/ ar=http://localhost:8080/ar/
+npm run qa:nojs -- http://localhost:8080/ out/home-nojs.png
+
+# Installable zip of the committed tree
+tools/build-zip.sh            # → dist/abuobaida-1.0.0.zip
+```
+
+## Without Composer or npm (Claude's cloud workspace)
+
+```bash
+eval "$(tools/qa/get-checkers.sh)"      # sets PHPCS="php …/phpcs"
+python3 tools/qa/phpcs-changed.py        # changed-lines gate
+$PHPCS --report=summary                  # full report
+```
+
+- **Playwright:** the scripts fall back to the copy preinstalled in the workspace (`/opt/npm-tools/node_modules/playwright`).
+- **axe-core:** set `AXE_PATH` to an `axe.min.js`. Without npm, an older 3.5.3 bundle ships in Deque's Java repository:
+
+```bash
 git clone -q --depth 1 --filter=blob:none --no-checkout https://github.com/dequelabs/axe-core-maven-html.git /tmp/axe
 git -C /tmp/axe checkout HEAD -- selenium/src/test/resources/files/axe.min.js
 export AXE_PATH=/tmp/axe/selenium/src/test/resources/files/axe.min.js
 ```
-
-Playwright: the scripts use a local `playwright` install if present. Otherwise they use the copy preinstalled in Claude's cloud workspace (`/opt/npm-tools/node_modules/playwright`).

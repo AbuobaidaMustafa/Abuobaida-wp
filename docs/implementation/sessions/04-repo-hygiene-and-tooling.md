@@ -1,6 +1,6 @@
 # Session 04: Repo hygiene, dev tooling and CI
 
-**Status:** Pending  
+**Status:** Done (2026-10-20), on `feature/04-repo-hygiene`  
 **Phase:** 2  
 **Size:** M  
 **Branch:** `feature/04-repo-hygiene (from master)`  
@@ -85,3 +85,28 @@ and separate verified results from assumptions. Never invent content; use [place
 Do not push, open PRs or publish. At the end, update HANDOFF.md, SESSION_INDEX.md
 and the progress log in IMPLEMENTATION_PLAN.md (and DECISIONS.md if anything was decided).
 ```
+
+## Outcome (2026-10-20)
+
+**Delivered as specified, with these deviations:**
+
+- **No `composer.lock`:** Packagist is unreachable from Claude's workspace. CI resolves within the constraints. Commit a lock from the owner's machine if reproducible installs matter.
+- **PHPCS gate:** the gate is **changed lines**, enforced by `tools/qa/phpcs-changed.py`, not changed files. The legacy v1 files would otherwise block every session.
+- **Removed `.eslintrc` and `.stylelintrc.json`:** they were `_s` configs for a toolchain that no longer exists. `tools/qa/check-logical-css.sh` covers the RTL rule.
+- **Added:**
+  - `tools/qa/get-checkers.sh`, which installs the checkers from GitHub;
+  - `tools/build-zip.sh`, which builds the theme zip;
+  - `.editorconfig`;
+  - `setup.sh` now blocks external HTTP and WP-Cron, and starts with an empty `debug.log`.
+
+**Verified:**
+
+- Rendered HTML of home, post, page, category archive, search, 404 and feed is **byte-identical** before and after.
+- `debug.log` stays empty while rendering.
+- PHPCS on changed lines: 0 errors. The negative test (an injected `$_GET` echo, and an untracked file) is caught.
+- Full PHPCS: **520 errors and 204 warnings in 9 files** (was 650 and 274 in 12).
+- `php -l` is clean. `composer validate` passes. The CI YAML parses.
+- `setup.sh` works from scratch at its new path.
+- The zip excludes docs and tools, installs via WP-CLI and renders.
+
+**Not verified:** the GitHub Actions run itself. It runs when the branch is pushed.

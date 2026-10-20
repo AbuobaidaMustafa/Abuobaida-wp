@@ -26,7 +26,7 @@ Make the live theme produce valid, robust documents with content visible without
 - One document shell: `header.php` prints doctype, `<html language_attributes>`, `wp_head()`, `<body body_class>`, `wp_body_open()` and a skip link; `header-home.php` keeps only the sidebar markup
 - Generic templates get a valid `<body>` and a minimal navigation (`wp_nav_menu('menu-1')`)
 - Enqueue Google Fonts and favicons (Site Icon) instead of printing them; fix the `main.js"` path
-- Guard ACF (`function_exists`) and empty fields; escape with `esc_html` and `esc_url`
+- Remove the hard ACF dependency (D-27): read the homepage fields with `get_field()` when ACF is active, otherwise straight from post meta (`about_*`, `contact_us_*`); handle empty fields; escape with `esc_html` and `esc_url`
 - Content visible without JS: scope AOS's hidden state to `html.js` (an inline `no-js`→`js` swap) and disable AOS and Typed under `prefers-reduced-motion`
 - Accessible names for icon links, a `<button>` for the mobile toggle, `title` on the iframe, one `<main>`, `alt` text
 - Make the CF7 form ID and the hard-coded upload URLs filterable or field-driven where trivial

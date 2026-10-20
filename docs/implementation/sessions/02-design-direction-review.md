@@ -1,6 +1,6 @@
 # Session 02: Design direction review and selection
 
-**Status:** Pending  
+**Status:** Done (2026-10-20): direction A chosen with no revision requests; D-25 confirmed  
 **Phase:** 1  
 **Size:** M  
 **Branch:** `(no code; canvas only)`  

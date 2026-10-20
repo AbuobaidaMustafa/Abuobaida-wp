@@ -24,7 +24,7 @@ Confirm the theme and plugin are safe and compatible across the supported PHP, W
 
 - Escaping and sanitising review (grep for `echo`, `printf`, `_e(`; PHPCS security sniffs at 0 errors)
 - PHPCompatibility 8.1–8.5; runtime smoke test on WordPress 6.6 and 7.1 (the local env with `WP_TAG`)
-- Plugin-off matrix (ACF, Polylang, CF7, abuobaida-core) on every template
+- Plugin-off matrix (Polylang, CF7, abuobaida-core; ACF absent) on every template
 - Secret and PII scan of the working tree
 
 ## Out of scope

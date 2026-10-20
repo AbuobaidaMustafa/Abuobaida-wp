@@ -70,13 +70,13 @@ Evolve the `abuobaida` theme into a modern, trilingual (Arabic, English, Chinese
 | # | Session | Phase | Size | Depends on | Gate / owner input |
 |---|---|---|---|---|---|
 | 00 | Audit and planning v2, pre-design canvas | 0 | L | — | ✅ done |
-| 01 | Production inventory: exports, hosting facts, content intake | 0 | S | 00 | Q-02, Q-03, Q-04, Q-08, Q-12 |
+| 01 | Production inventory: exports, hosting facts, content intake | 0 | S | 00 | Q-02, Q-03, Q-04, Q-12 |
 | 02 | Design direction review and selection | 1 | M | 00 | Owner feedback on the canvas |
 | 03 | Full design set for the chosen direction (all templates, three languages, states) → **G1** | 1 | L | 02 (01 helps) | G1 |
 | 04 | Repo hygiene, dev tooling, CI | 2 | M | 00 | — |
 | 05 | Optional hotfix of the live v1 theme (D-22) | 2 | M | 04 | Owner decides to deploy |
 | 06 | v2 foundation: branch, structure, `theme.json` tokens, fonts, base CSS, asset loader, i18n adapter | 2 | L | 03 (G1), 04 | — |
-| 07 | Companion plugin and content model (CPTs, taxonomies, ACF JSON, helpers, fixtures) | 2 | M | 01, 04 | Q-08 |
+| 07 | Companion plugin and content model (CPTs, taxonomies, native fields and meta boxes, helpers, fixtures) | 2 | L | 04 (01 helps) | — (D-27: no ACF) |
 | 08 | Site shell: header, navigation, language switcher, footer, RTL | 3 | M | 06 | Q-07, Q-12 |
 | 09 | Homepage I: hero, selected work, capabilities | 4 | M | 07, 08 | Q-02, Q-09, Q-10 |
 | 10 | Homepage II: testimonials, contact, résumé, map | 4 | M | 07, 08 | Q-11, Q-13 |
@@ -118,7 +118,7 @@ flowchart LR
 | Rank | Improvement | Fixes | Sessions |
 |---|---|---|---|
 | 1 | Replace the licence-encumbered iPortfolio layer and its stock assets | P-01 | 06–14 |
-| 2 | Valid, robust document shell and ACF guards (hotfix now, then v2) | P-02, P-03, P-05 | 05, 06, 08 |
+| 2 | Valid, robust document shell; no hard ACF dependency (hotfix now, none at all in v2) | P-02, P-03, P-05 | 05, 06, 08 |
 | 3 | Content visible without JS; no motion the visitor didn't trigger | P-04 | 05, 09 |
 | 4 | Real project content model and case studies | P-06 | 07, 09, 11, 12 |
 | 5 | Trilingual with correct RTL | P-07 | 06, 08, 17 |
@@ -189,3 +189,6 @@ flowchart LR
 |---|---|---|
 | 2026-10-14 | 00 v1 | First audit and plan, from reading the code. |
 | 2026-10-14 | 00 v2 | Measured audit on a local WordPress 7.1.3; PHPCS and PHPCompatibility run; Polylang spike; platform facts checked; pre-design canvas with 3 directions (10 artboards); plan, decisions, architecture, multilingual, content, design and test docs rewritten; local-environment recipe tested from scratch. Committed locally on `docs/modernization-plan`, not pushed. |
+| 2026-10-20 | Decisions | The owner chose design A (D-25), approved the v1 hotfix (D-22), dropped ACF for v2 in favour of native fields (D-27), and approved pushing feature branches for review (D-28). |
+| 2026-10-20 | 02 | Done: direction A chosen; no artboard revisions requested. |
+| 2026-10-20 | 04 | Done on `feature/04-repo-hygiene`: ignore files, editorconfig, tools/ (local env, QA scripts, changed-lines PHPCS gate, logical-CSS check, checker installer, zip builder), own composer, phpcs and package configs, CI workflow, theme metadata, `ABUOBAIDA_VERSION`, dead files removed. Output byte-identical. |

@@ -13,12 +13,12 @@ One line per session. The details are in `sessions/`. Update the status at the e
 |---|---|---|---|---|---|---|
 | 00 | Audit and planning (v2) and pre-design | 0 | L | — | ✅ Done | [00-audit-and-planning.md](sessions/00-audit-and-planning.md) |
 | 01 | Production inventory and content intake | 0 | S | 00 | Waiting on owner input | [01-production-inventory.md](sessions/01-production-inventory.md) |
-| 02 | Design direction review and selection | 1 | M | 00 | ⏳ Next (owner reviews the canvas) | [02-design-direction-review.md](sessions/02-design-direction-review.md) |
-| 03 | Full design set and approval (gate G1) | 1 | L | 02 (01 helps) | Pending | [03-design-full-set.md](sessions/03-design-full-set.md) |
-| 04 | Repo hygiene, dev tooling and CI | 2 | M | 00 | ⏳ Next (no input needed) | [04-repo-hygiene-and-tooling.md](sessions/04-repo-hygiene-and-tooling.md) |
-| 05 | Optional hotfix of the live v1 theme | 2 | M | 04 | Pending | [05-v1-hotfix.md](sessions/05-v1-hotfix.md) |
+| 02 | Design direction review and selection | 1 | M | 00 | ✅ Done (A chosen) | [02-design-direction-review.md](sessions/02-design-direction-review.md) |
+| 03 | Full design set and approval (gate G1) | 1 | L | 02 (01 helps) | ⏳ Next | [03-design-full-set.md](sessions/03-design-full-set.md) |
+| 04 | Repo hygiene, dev tooling and CI | 2 | M | 00 | ✅ Done (push pending GitHub access) | [04-repo-hygiene-and-tooling.md](sessions/04-repo-hygiene-and-tooling.md) |
+| 05 | Optional hotfix of the live v1 theme | 2 | M | 04 | ⏳ Next (approved, D-22) | [05-v1-hotfix.md](sessions/05-v1-hotfix.md) |
 | 06 | v2 foundation: structure, tokens, fonts, assets, i18n adapter | 2 | L | 03 (G1), 04 | Pending | [06-v2-foundation.md](sessions/06-v2-foundation.md) |
-| 07 | Companion plugin and content model | 2 | M | 01, 04 | Pending | [07-content-model-plugin.md](sessions/07-content-model-plugin.md) |
+| 07 | Companion plugin and content model | 2 | L | 04 (01 helps) | Pending | [07-content-model-plugin.md](sessions/07-content-model-plugin.md) |
 | 08 | Site shell: header, navigation, language switcher, footer | 3 | M | 06 | Pending | [08-site-shell.md](sessions/08-site-shell.md) |
 | 09 | Homepage I: hero, selected work, capabilities | 4 | M | 07, 08 | Pending | [09-homepage-hero-work-capabilities.md](sessions/09-homepage-hero-work-capabilities.md) |
 | 10 | Homepage II: testimonials, contact, résumé, map | 4 | M | 07, 08 | Pending | [10-homepage-testimonials-contact.md](sessions/10-homepage-testimonials-contact.md) |
@@ -34,6 +34,7 @@ One line per session. The details are in `sessions/`. Update the status at the e
 
 **Recommended next:**
 
-- **S02:** design review. Owner feedback on the canvas is needed.
-- **S04:** repo tooling. It can run in parallel.
-- **S01:** runs as soon as the owner sends the exports and the questionnaire.
+- **S05:** live-site hotfix (approved, D-22). Builds on S04.
+- **S03:** full design set in direction A, ending with gate G1.
+- **S07:** the companion plugin with native fields (D-27). It can start before G1 because it has no UI.
+- **S01:** whenever the owner sends the hosting facts, exports and the questionnaire.

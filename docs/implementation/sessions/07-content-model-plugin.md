@@ -2,32 +2,34 @@
 
 **Status:** Pending  
 **Phase:** 2  
-**Size:** M  
+**Size:** L  
 **Branch:** `feature/07-content-model (plugin repo or /plugins/abuobaida-core)`  
-**Depends on:** 01, 04
+**Depends on:** 04 (01 helps)
 
 ## Objective
 
-Create `abuobaida-core` with the `project` and `testimonial` post types, the `project_type` and `project_stack` taxonomies, versioned ACF field groups and Polylang registration, plus local fixtures.
+Create `abuobaida-core` with the `project` and `testimonial` post types, the `project_type` and `project_stack` taxonomies, native custom fields (post and term meta edited in meta boxes, no ACF, D-27) and Polylang registration, plus local fixtures.
 
 ## Required context
 
 - PROJECT_CONTEXT.md
 - ARCHITECTURE.md §5, §8
 - MULTILINGUAL.md §2
-- DECISIONS.md D-05, D-08, D-09, D-16, D-19, D-24, Q-08
+- DECISIONS.md D-05, D-08, D-09, D-19, D-24, D-27
 - docs/content/projects.md (if S01 is done)
 
 ## Prerequisites
 
 - S04
-- Q-08 answered (ACF free or PRO); default free
+- D-27: no ACF; fields are registered and edited natively
 - D-05 confirmed: plugin location (separate repo or `plugins/` folder in this repo)
 
 ## Scope
 
 - Register the post types and taxonomies exactly as in ARCHITECTURE §5.1; flush rewrite rules on activation and deactivation only
-- ACF JSON load and save paths inside the plugin; field groups `project_details`, `front_page`, `testimonial_details`, `term_order` (free field types)
+- `inc/fields.php`: `register_post_meta()` / `register_term_meta()` for the `project_details`, `front_page`, `testimonial_details` and `term_order` fields (ARCHITECTURE §5.2), each with type, sanitize callback, `auth_callback` and `show_in_rest`
+- Meta boxes: render from one field schema array; save verifies the nonce, skips autosaves and revisions, checks `edit_post` / `edit_term`, sanitises per field
+- `assets/admin.js`: small vanilla media picker (`wp.media`) for file and image fields; no build step
 - Polylang: add `project` and `project_type` via `pll_get_post_types` and `pll_get_taxonomies`; keep `testimonial` and `project_stack` untranslated
 - Admin columns: featured, year, type; menu order support
 - Fixtures (local only): a WP-CLI `eval-file` seeding the S00 real items (this theme's rebuild, the two Mostaql projects, the two reviews) plus placeholders clearly titled `[Placeholder]`
@@ -43,14 +45,16 @@ Create `abuobaida-core` with the `project` and `testimonial` post types, the `pr
 | File | Change |
 |---|---|
 | `abuobaida-core/abuobaida-core.php` | add |
-| `abuobaida-core/acf-json/*.json` | add |
+| `abuobaida-core/inc/fields.php`, `abuobaida-core/assets/admin.js` | add |
 | `abuobaida-core/readme.txt` | add |
 | `tools/local-env/fixtures.php` | add |
 
 ## Acceptance criteria
 
 - [ ] Projects and testimonials are editable with every field; a project can be translated in Polylang
-- [ ] Everything works with ACF off (meta stored and read via the helper, no fatal error)
+- [ ] No ACF anywhere: fields save and load with ACF absent
+- [ ] Saving without a valid nonce, or as a user without `edit_post`, changes nothing (tested)
+- [ ] Invalid input is sanitised or rejected per field (tested: script tags, bad URLs, wrong select values)
 - [ ] PHPCS clean for the plugin
 - [ ] Migration dry-run lists the values it would copy
 

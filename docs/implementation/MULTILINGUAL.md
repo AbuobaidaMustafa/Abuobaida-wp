@@ -46,9 +46,9 @@ Recorded so S08 and S18 can reproduce it exactly.
 
 | Limitation | Workaround |
 |---|---|
-| No ACF field sync or copy between translations | Each translation fills its own fields. Fields are kept few (ARCHITECTURE §5.2). Testimonials are shared rather than translated (D-09). |
+| No custom-field sync or copy between translations | Each translation fills its own fields. Fields are kept few (ARCHITECTURE §5.2). Testimonials are shared rather than translated (D-09). |
 | No translation of Site Editor templates or patterns (documented as Pro) | Classic theme (D-02). Templates contain no hard-coded copy, and every string goes through `__()`. |
-| No ACF Options-page translation | No Options pages. Language content lives on each front page (D-19). |
+| No translation of options pages | No Options pages. Language content lives on each front page (D-19). |
 | No XLIFF export or machine-translation integration | Translation workflow in §7. |
 
 ## 5. RTL rules

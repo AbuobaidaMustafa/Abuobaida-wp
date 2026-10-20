@@ -7,8 +7,7 @@ Read the sections your session spec lists. Decisions referenced: D-02, D-05, D-0
 ```mermaid
 flowchart LR
   subgraph Plugins
-    CORE["abuobaida-core (companion plugin)<br/>project, testimonial post types<br/>project_type, project_stack taxonomies<br/>ACF field groups (acf-json)"]
-    ACF[ACF free]
+    CORE["abuobaida-core (companion plugin)<br/>project, testimonial post types<br/>project_type, project_stack taxonomies<br/>native custom fields (post/term meta, meta boxes)"]
     PLL[Polylang free]
     CF7[Contact Form 7]
   end
@@ -21,14 +20,13 @@ flowchart LR
     JS[assets/js: navigation, map-consent, project-filter (optional)]
   end
   CORE --> INC
-  ACF --> INC
   PLL --> INC
   CF7 --> PARTS
   TJ --> CSS
   INC --> TPL --> PARTS
 ```
 
-The theme must render without the companion plugin, ACF, Polylang or CF7. Each missing dependency hides its section and never causes a fatal error.
+The theme must render without the companion plugin, Polylang or CF7. v2 does not use ACF at all (D-27). Each missing dependency hides its section and never causes a fatal error.
 
 ## 2. Requirements (D-13)
 
@@ -71,7 +69,8 @@ abuobaida/                      theme (this repository root)
 
 abuobaida-core/                 companion plugin (separate folder/repo, D-05)
 ├── abuobaida-core.php          register post types/taxonomies, Polylang registration, activation flush
-├── acf-json/                   versioned field groups (load/save path)
+├── inc/fields.php              register_post_meta / register_term_meta + meta boxes (nonce, capability checks)
+├── assets/admin.js             media picker for file/image fields (vanilla, wp.media)
 └── readme.txt
 ```
 
@@ -101,7 +100,9 @@ abuobaida-core/                 companion plugin (separate folder/repo, D-05)
 | `project_stack` (taxonomy on `project`) | Flat, tag-like (e.g. WordPress, Laravel, PHP, Python). | Not translated: technology names stay the same in every language. |
 | `testimonial` | Not public (no single URL), `show_in_rest`. | **Not** translatable: shared across languages (D-09). |
 
-### 5.2 Field groups (free ACF types only, D-16)
+### 5.2 Custom fields (native post and term meta, D-27)
+
+No ACF. Each field is registered with `register_post_meta()` or `register_term_meta()` (matching `type`, `single`, `sanitize_callback`, `auth_callback`, `show_in_rest`) and edited in a PHP meta box. The **Type** column below names the editing control: Textarea and Text store strings; WYSIWYG stores `wp_kses_post()` HTML; URL stores `esc_url_raw()`; True/False stores a boolean; Select stores one allowed value; Post Object and File store an integer ID (File and Image use the media modal through `assets/admin.js`); Date stores `Y-m-d`.
 
 **`project_details`** on `project`:
 
@@ -145,7 +146,7 @@ Screenshots go in core Gallery or Image blocks in the post content.
 
 **`term_order`** on `project_type`: `order` (Number).
 
-**Legacy compatibility:** the existing `about` and `contact_us` groups are read as fallbacks by `abuobaida_field()` until their content has been migrated (S10). They are retired after launch.
+**Legacy compatibility:** the v1 ACF values are plain post meta (`about_whoami`, `about_title`, `about_details`, `about_info_*`, `contact_us_loc|email|call|map`; verified locally). `abuobaida_field()` reads them directly as fallbacks until S10 migrates them; ACF itself is never called by v2 and can be deactivated after launch.
 
 ### 5.3 Global settings (Customizer, not translated)
 
@@ -202,6 +203,6 @@ Screenshots go in core Gallery or Image blocks in the post content.
 ## 8. Security notes
 
 - No custom form handling: CF7 owns submission, validation and nonces.
-- The companion plugin's admin fields use ACF's sanitisation. Custom term meta saves check capabilities and sanitise.
+- Meta-box saves verify a nonce, skip autosaves and revisions, check `current_user_can( 'edit_post', $post_id )` (`edit_term` for term meta) and sanitise every field through its registered `sanitize_callback`. REST writes are limited by each field's `auth_callback`.
 - No `$_GET`/`$_POST` reads in the theme. If a filter UI needs query vars, use `get_query_var()` with registered vars and sanitise them.
 - The repository must never contain `wp-config.php`, database dumps or `.env` files (`.gitignore`, S04).

@@ -7,6 +7,9 @@
 (function() {
   "use strict";
 
+  // 1.0.1: honour the visitor's reduced-motion setting.
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   /**
    * Easy selector helper function
    */
@@ -67,7 +70,7 @@
     let elementPos = select(el).offsetTop
     window.scrollTo({
       top: elementPos,
-      behavior: 'smooth'
+      behavior: reduceMotion ? 'auto' : 'smooth'
     })
   }
 
@@ -88,27 +91,40 @@
   }
 
   /**
-   * Mobile nav toggle
+   * Mobile nav toggle (a real <button> since 1.0.1: keyboard operable, announces its state)
    */
+  const setMobileNav = (open) => {
+    const toggle = select('.mobile-nav-toggle')
+    select('body').classList.toggle('mobile-nav-active', open)
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+      const icon = toggle.querySelector('i')
+      if (icon) {
+        icon.classList.toggle('bi-list', !open)
+        icon.classList.toggle('bi-x', open)
+      }
+    }
+  }
   on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
+    setMobileNav(!select('body').classList.contains('mobile-nav-active'))
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && select('body').classList.contains('mobile-nav-active')) {
+      setMobileNav(false)
+      const toggle = select('.mobile-nav-toggle')
+      if (toggle) toggle.focus()
+    }
   })
 
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
+    if (this.hash && this.pathname === window.location.pathname && select(this.hash)) {
       e.preventDefault()
 
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
+      if (select('body').classList.contains('mobile-nav-active')) {
+        setMobileNav(false)
       }
       scrollto(this.hash)
     }
@@ -129,7 +145,10 @@
    * Hero type effect
    */
   const typed = select('.typed')
-  if (typed) {
+  if (typed && (reduceMotion || typeof Typed === 'undefined')) {
+    // No typing effect: show the roles as plain text.
+    typed.textContent = typed.getAttribute('data-typed-items').split(',').map((item) => item.trim()).join(', ')
+  } else if (typed) {
     let typed_strings = typed.getAttribute('data-typed-items')
     typed_strings = typed_strings.split(',')
     new Typed('.typed', {
@@ -145,7 +164,11 @@
    * Skills animation
    */
   let skilsContent = select('.skills-content');
-  if (skilsContent) {
+  if (skilsContent && typeof Waypoint === 'undefined') {
+    select('.progress .progress-bar', true).forEach((el) => {
+      el.style.width = el.getAttribute('aria-valuenow') + '%'
+    });
+  } else if (skilsContent) {
     new Waypoint({
       element: skilsContent,
       offset: '80%',
@@ -163,7 +186,7 @@
    */
   window.addEventListener('load', () => {
     let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
+    if (portfolioContainer && typeof Isotope !== 'undefined') {
       let portfolioIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item'
       });
@@ -181,7 +204,7 @@
           filter: this.getAttribute('data-filter')
         });
         portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
+          if (typeof AOS !== 'undefined') AOS.refresh()
         });
       }, true);
     }
@@ -191,17 +214,17 @@
   /**
    * Initiate portfolio lightbox 
    */
-  const portfolioLightbox = GLightbox({
+  const portfolioLightbox = typeof GLightbox === 'function' ? GLightbox({
     selector: '.portfolio-lightbox'
-  });
+  }) : null;
 
   /**
    * Portfolio details slider
    */
-  new Swiper('.portfolio-details-slider', {
+  if (typeof Swiper !== 'undefined') new Swiper('.portfolio-details-slider', {
     speed: 400,
     loop: true,
-    autoplay: {
+    autoplay: reduceMotion ? false : {
       delay: 5000,
       disableOnInteraction: false
     },
@@ -215,10 +238,10 @@
   /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
+  if (typeof Swiper !== 'undefined') new Swiper('.testimonials-slider', {
     speed: 600,
     loop: true,
-    autoplay: {
+    autoplay: reduceMotion ? false : {
       delay: 5000,
       disableOnInteraction: false
     },
@@ -245,6 +268,11 @@
    * Animation on scroll
    */
   window.addEventListener('load', () => {
+    if (reduceMotion || typeof AOS === 'undefined') {
+      // No reveal animation: make every animated block plainly visible.
+      select('[data-aos]', true).forEach((el) => el.removeAttribute('data-aos'))
+      return
+    }
     AOS.init({
       duration: 1000,
       easing: 'ease-in-out',

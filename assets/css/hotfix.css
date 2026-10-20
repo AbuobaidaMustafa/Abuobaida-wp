@@ -1,0 +1,131 @@
+/*
+ * Abuobaida 1.0.1 hotfix, loaded after the v1 template stylesheet.
+ * Fixes behaviour without changing the homepage design. Logical properties only.
+ */
+
+/* 1. Without JavaScript, nothing stays hidden ------------------------------ */
+
+/* Sections that fade in with AOS. */
+html.no-js [data-aos] {
+	opacity: 1 !important;
+	transform: none !important;
+	transition: none !important;
+}
+
+/* Skill bars are drawn by JavaScript; show their values without it. */
+html.no-js .skills .progress-bar[aria-valuenow="100"] { width: 100%; }
+html.no-js .skills .progress-bar[aria-valuenow="90"] { width: 90%; }
+html.no-js .skills .progress-bar[aria-valuenow="80"] { width: 80%; }
+html.no-js .skills .progress-bar[aria-valuenow="75"] { width: 75%; }
+html.no-js .skills .progress-bar[aria-valuenow="70"] { width: 70%; }
+
+/* Hero roles: the typing effect needs JavaScript, so show the plain list instead. */
+html.no-js .typed-fallback {
+	position: static !important;
+	clip: auto;
+	clip-path: none;
+	width: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	white-space: normal;
+}
+
+/* The hero text block is centred in the full-width hero, under the fixed sidebar.
+   The plain list of roles (no JavaScript, or reduced motion) is wider than the
+   name and would push the block behind the sidebar, so it wraps instead. The
+   animated single role and the name are narrower than this, so nothing moves. */
+#hero .hero-container p {
+	max-width: 560px;
+}
+
+/* Testimonials: without the slider, stack every slide. */
+html.no-js .testimonials-slider .swiper-wrapper {
+	display: block;
+	transform: none !important;
+}
+
+html.no-js .testimonials-slider .swiper-slide {
+	width: auto !important;
+	margin-block-end: 20px;
+}
+
+/* 2. Respect reduced motion ----------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+	html {
+		scroll-behavior: auto !important;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* 3. Keyboard focus the template had removed ------------------------------ */
+
+.mobile-nav-toggle {
+	padding: 0;
+}
+
+.mobile-nav-toggle:focus-visible {
+	outline: 3px solid #fff !important;
+	box-shadow: 0 0 0 6px #0b5fa5;
+}
+
+#header a:focus-visible,
+.back-to-top:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+#main a:focus-visible,
+#main button:focus-visible,
+#main input:focus-visible,
+#main textarea:focus-visible,
+#main select:focus-visible {
+	outline: 3px solid #0b5fa5;
+	outline-offset: 2px;
+}
+
+/* 4. Posts, pages, archives and search inside the shared sidebar layout ---- */
+
+.site-main {
+	max-width: 1100px;
+	padding: 60px clamp(16px, 4vw, 60px);
+}
+
+#secondary {
+	padding: 0 clamp(16px, 4vw, 60px) 60px;
+}
+
+@media (min-width: 1200px) {
+
+	#secondary {
+		margin-inline-start: 300px;
+	}
+}
+
+/* The template's link colour (#149ddd) is 3.0:1 on white; 4.5:1 is the minimum for text. */
+.site-main a,
+#secondary a {
+	color: #0b5fa5;
+}
+
+.site-main a:hover,
+#secondary a:hover {
+	color: #062f53;
+}
+
+/* 404: the terminal overlay was sized to the viewport but offset by the sidebar,
+   which made the page 300px too wide (horizontal scroll). Size it to <main>. */
+.error404 #main {
+	position: relative;
+	overflow: hidden;
+	min-height: 100vh;
+}

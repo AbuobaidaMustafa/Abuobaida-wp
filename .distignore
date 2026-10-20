@@ -1,0 +1,23 @@
+# Files left out of the installable theme zip (wp dist-archive, or tools/build-zip.sh).
+/.git
+/.github
+/.gitignore
+/.distignore
+/.editorconfig
+/.eslintrc
+/.stylelintrc.json
+/docs
+/tools
+/node_modules
+/vendor
+/dist
+/out
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpcs.xml.dist
+README.md
+*.zip
+*.log
+.DS_Store

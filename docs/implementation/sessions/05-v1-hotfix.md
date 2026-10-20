@@ -57,7 +57,7 @@ Make the live theme produce valid, robust documents with content visible without
 
 ## Tests and verification
 
-- `tools/qa/measure.js` and `nojs.js` before and after (table in HANDOFF)
+- `tools/qa/measure.js` and `tools/qa/nojs.js` before and after (table in HANDOFF)
 - ACF on/off and empty-field tests as in S00
 - Record anything that could not be verified, and why.
 

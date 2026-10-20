@@ -67,7 +67,7 @@ abuobaida/                      theme (this repository root)
 │   └── icons/                  inline SVG sprite (stroke icons), license notes
 ├── languages/                  abuobaida.pot, ar.po/.mo, zh_CN.po/.mo
 ├── docs/                       planning, baseline, design, QA
-└── tools/                      local-env + QA scripts (moved from docs/implementation/qa in S04)
+└── tools/                      local-env + QA scripts (README.md, local-env/, qa/)
 
 abuobaida-core/                 companion plugin (separate folder/repo, D-05)
 ├── abuobaida-core.php          register post types/taxonomies, Polylang registration, activation flush

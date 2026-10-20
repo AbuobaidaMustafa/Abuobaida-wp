@@ -10,7 +10,7 @@
   - planning set: `AUDIT.md` (measured), `IMPLEMENTATION_PLAN.md`, `DECISIONS.md`, `ARCHITECTURE.md`, `MULTILINGUAL.md`, `CONTENT_STRATEGY.md`, `DESIGN_BRIEF.md`, `TEST_STRATEGY.md`;
   - 20 session specs;
   - `docs/baseline/` (screenshots and `report.json`);
-  - `qa/`, a reproducible local WordPress recipe and the measurement scripts.
+  - `qa/` (moved to `tools/` in S04), a reproducible local WordPress recipe and the measurement scripts.
 - **Design:** the pre-design canvas *Portfolio Theme Pre-design* is at <https://claude.ai/artifact/DF4jsBp8VwhkEZWAERxXzK> (private to the owner). Three directions (A Survey recommended, B Console, C Two Rivers), 10 artboards, with A shown in English, Arabic and Chinese plus a case study and a token sheet.
 
 ## What changed from the first plan (v1 → v2)
@@ -47,7 +47,7 @@
 **Verified (run):**
 
 - Everything in AUDIT §2 is measured.
-- `qa/local-env/setup.sh` works from scratch (WordPress 7.1.3 served, theme active, seeded homepage).
+- `tools/local-env/setup.sh` works from scratch (WordPress 7.1.3 served, theme active, seeded homepage).
 - Polylang free's `lang`/`dir`/`hreflang` output and its front-page URL behaviour.
 
 **Not verified:**

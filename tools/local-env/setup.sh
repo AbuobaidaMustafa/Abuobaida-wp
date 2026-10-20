@@ -6,8 +6,8 @@
 # repository, so edits show up immediately.
 #
 # Usage:
-#   docs/implementation/qa/local-env/setup.sh <target-dir> [--polylang] [--test-data]
-#   php -S 127.0.0.1:8080 -t <target-dir>/wp docs/implementation/qa/local-env/router.php
+#   tools/local-env/setup.sh <target-dir> [--polylang] [--test-data]
+#   php -S 127.0.0.1:8080 -t <target-dir>/wp tools/local-env/router.php
 #
 # Requires: git, php (8.1+, pdo_sqlite), composer (offline `dump-autoload` only), curl.
 # Local development only: admin/admin, debug log on, nothing here is production-safe.
@@ -36,7 +36,7 @@ WPCLI_VERSION="${WPCLI_VERSION:-2.12.0}"
 PORT="${PORT:-8080}"
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-THEME_DIR="$(cd "$HERE/../../../.." && pwd)"
+THEME_DIR="$(cd "$HERE/../.." && pwd)"
 mkdir -p "$TARGET"
 TARGET="$(cd "$TARGET" && pwd)"
 WPDIR="$TARGET/wp"
@@ -73,6 +73,9 @@ define( 'WP_DEBUG_DISPLAY', false );
 define( 'DB_DIR', '$TARGET/db' );
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
+// Keep debug.log meaningful: no update checks or cron calls to wordpress.org.
+define( 'WP_HTTP_BLOCK_EXTERNAL', true );
+define( 'DISABLE_WP_CRON', true );
 PHP
 fi
 

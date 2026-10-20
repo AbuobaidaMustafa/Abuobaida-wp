@@ -49,7 +49,7 @@ Remove everything v1 left behind (vendor libraries, iPortfolio CSS and JS, demo 
 ## Tests and verification
 
 - Definition of done: `TEST_STRATEGY.md` §4
-- `qa/measure.js` on all templates; compare with the baseline
+- `tools/qa/measure.js` on all templates; compare with the baseline
 - Record anything that could not be verified, and why.
 
 ## Documentation updates

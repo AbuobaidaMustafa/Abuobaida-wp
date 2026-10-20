@@ -7,8 +7,9 @@ const { chromium } = (() => { try { return require('playwright'); } catch (e) { 
 
 const outDir = process.argv[2];
 const targets = process.argv.slice(3).map((a) => { const i = a.indexOf('='); return { name: a.slice(0, i), url: a.slice(i + 1) }; });
-// axe-core bundle: set AXE_PATH (npm i axe-core gives node_modules/axe-core/axe.min.js). See README.md.
-const AXE = fs.readFileSync(process.env.AXE_PATH || path.join(__dirname, 'axe.min.js'), 'utf8');
+// axe-core bundle: `npm install` (devDependency), or AXE_PATH. See tools/README.md.
+const axePath = process.env.AXE_PATH || (() => { try { return require.resolve('axe-core/axe.min.js'); } catch (e) { return path.join(__dirname, 'axe.min.js'); } })();
+const AXE = fs.readFileSync(axePath, 'utf8');
 const WIDTHS = { home: [375, 768, 1280, 1920] };
 
 (async () => {

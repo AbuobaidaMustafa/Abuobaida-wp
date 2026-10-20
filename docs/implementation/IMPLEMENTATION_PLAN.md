@@ -166,7 +166,7 @@ flowchart LR
 | R-06 | IP and permissions (template, photos, client names, reviews) | Medium | High | S14 asset audit; Q-10 and Q-11 permissions; D-26 history decision | Owner + Claude |
 | R-07 | Migration breaks the live site | Low | High | Staging rehearsal; backups; rollback (§8); same theme slug | Owner |
 | R-08 | Scope creep (blog features, dark mode, animations) | Medium | Medium | Out-of-scope lists in every session; new ideas go to DECISIONS first | Both |
-| R-09 | Tooling blocked in a Claude session (Packagist, npm) | High | Low | GitHub-only recipes, proven in S00 (`qa/README.md`) | Claude |
+| R-09 | Tooling blocked in a Claude session (Packagist, npm) | High | Low | GitHub-only recipes, proven in S00 (`tools/README.md`) | Claude |
 | R-10 | No upstream for the Underscores scaffold | Certain | Low | We own the code; `_s` naming removed in S04 and S06 | Claude |
 | R-11 | CJK fonts slow or inconsistent | Low | Low | System CJK stack (D-10) | Claude |
 | R-12 | SEO dip from URL and structure changes | Low | Medium | English stays at `/`; hreflang; sitemaps checked in S08 and S18 | Claude |

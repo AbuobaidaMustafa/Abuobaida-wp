@@ -1,0 +1,37 @@
+# Dependencies (installed by composer / npm, never committed)
+/vendor/
+/node_modules/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+wp-config.php
+wp-config-local.php
+auth.json
+
+# Databases, dumps and logs
+*.sql
+*.sql.gz
+*.sqlite
+*.db
+*.log
+debug.log
+
+# Build and QA output
+/dist/
+/out/
+/tools/qa/out/
+*.zip
+.phpcs-cache
+
+# Local WordPress installs created by tools/local-env/setup.sh inside the repo
+/wp/
+/.wp-env/
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

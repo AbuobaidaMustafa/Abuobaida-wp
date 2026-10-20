@@ -43,5 +43,5 @@
 | `MULTILINGUAL.md` | Anything that touches text, layout or URLs |
 | `CONTENT_STRATEGY.md` | Homepage, About, projects |
 | `DESIGN_BRIEF.md` | Any UI session |
-| `TEST_STRATEGY.md` + `qa/` | Verifying, or setting up the local environment |
+| `TEST_STRATEGY.md` + `tools/` | Verifying, or setting up the local environment |
 | `AUDIT.md` | Only to look up a cited finding |

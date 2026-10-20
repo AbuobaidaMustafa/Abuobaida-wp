@@ -6,7 +6,7 @@
 
 | Environment | What it's good for | How |
 |---|---|---|
-| **Claude's cloud workspace** (proven in S00) | PHP lint, PHPCS, a local WordPress, Playwright screenshots, axe, no-JS and RTL renders, the Polylang spike | `qa/local-env/setup.sh <dir> [--polylang] [--test-data]` (WordPress 7.1.3 + SQLite + ACF + CF7, all from GitHub). Packagist and npm are blocked there, so PHPCS and its standards are cloned from GitHub (§3). |
+| **Claude's cloud workspace** (proven in S00) | PHP lint, PHPCS, a local WordPress, Playwright screenshots, axe, no-JS and RTL renders, the Polylang spike | `tools/local-env/setup.sh <dir> [--polylang] [--test-data]` (WordPress 7.1.3 + SQLite + ACF + CF7, all from GitHub). Packagist and npm are blocked there, so PHPCS and its standards are cloned from GitHub (§3). |
 | **Owner's machine** | Lighthouse, real browsers (Safari, Firefox, Chrome), screen readers, real fonts and images | `wp-env` (Docker) or LocalWP, or the same `setup.sh` (needs git, PHP and Composer). |
 | **CI (GitHub Actions)**, added in S04 and run only once the owner pushes | Lint matrix on every push | PHP 8.1, 8.3 and 8.5 `php -l`; PHPCS (WPCS + PHPCompatibilityWP); logical-CSS check. |
 | **Staging** (S18, if the host allows it) | Migration rehearsal, Polylang setup, final QA on real data | Host's staging, or a theme preview on production (Appearance → Themes → Live Preview) as a fallback. |
@@ -21,8 +21,8 @@
 
 ```bash
 # Local WordPress (see script header for options)
-docs/implementation/qa/local-env/setup.sh ~/wp-abuobaida --test-data
-php -S 127.0.0.1:8080 -t ~/wp-abuobaida/wp docs/implementation/qa/local-env/router.php
+tools/local-env/setup.sh ~/wp-abuobaida --test-data
+php -S 127.0.0.1:8080 -t ~/wp-abuobaida/wp tools/local-env/router.php
 
 # PHP syntax
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l | grep -v 'No syntax errors'
@@ -30,16 +30,16 @@ find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l | gre
 # Coding standards. Composer works on the owner's machine (S04 adds composer scripts).
 # Where Packagist is blocked, clone PHP_CodeSniffer 3.13, WPCS 3.4, PHPCSUtils,
 # PHPCSExtra, PHPCompatibility 9.3.5, PHPCompatibilityWP and PHPCompatibilityParagonie
-# from GitHub and set installed_paths: exact commands in qa/README.md.
+# from GitHub and set installed_paths: exact commands in tools/README.md.
 phpcs --standard=phpcs.xml.dist
 
 # Rendered checks: screenshots at 4 widths, request and byte counts, axe, tab order
-AXE_PATH=node_modules/axe-core/axe.min.js node docs/implementation/qa/measure.js out/ \
+AXE_PATH=node_modules/axe-core/axe.min.js node tools/qa/measure.js out/ \
   home=http://localhost:8080/ home_ar=http://localhost:8080/ar/ home_zh=http://localhost:8080/zh/ \
   project=http://localhost:8080/projects/<slug>/ notfound=http://localhost:8080/nope/
 
 # Content visible with JavaScript off
-node docs/implementation/qa/nojs.js http://localhost:8080/ out/home-nojs.png
+node tools/qa/nojs.js http://localhost:8080/ out/home-nojs.png
 
 # Theme strings
 wp i18n make-pot . languages/abuobaida.pot && msgfmt --statistics languages/ar.po

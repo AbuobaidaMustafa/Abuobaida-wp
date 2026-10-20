@@ -7,9 +7,9 @@
  * @package Abuobaida
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+if ( ! defined( 'ABUOBAIDA_VERSION' ) ) {
+	// Theme version, appended to enqueued assets to bust caches. Keep in sync with style.css.
+	define( 'ABUOBAIDA_VERSION', '1.0.0' );
 }
 
 if ( ! function_exists( 'abuobaida_setup' ) ) :
@@ -143,7 +143,7 @@ add_action( 'widgets_init', 'abuobaida_widgets_init' );
  * Enqueue scripts and styles.
  */
 function abuobaida_scripts() {
-	wp_enqueue_style( 'abuobaida-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'abuobaida-style', get_stylesheet_uri(), array(), ABUOBAIDA_VERSION );
 	wp_style_add_data( 'abuobaida-style', 'rtl', 'replace' );
 
     //Theme css files
@@ -159,19 +159,19 @@ function abuobaida_scripts() {
 
 	}
 
-	wp_enqueue_script( 'abuobaida-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'abuobaida-navigation', get_template_directory_uri() . '/js/navigation.js', array(), ABUOBAIDA_VERSION, true );
 
-    //theme js files
-    wp_enqueue_script( 'aos', get_template_directory_uri().'/assets/vendor/aos/aos.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri().'/assets/vendor//bootstrap/js/bootstrap.bundle.min.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'glightbox', get_template_directory_uri().'/assets/vendor/glightbox/js/glightbox.min.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'isotope', get_template_directory_uri().'/assets/vendor/isotope-layout/isotope.pkgd.min.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'validate', get_template_directory_uri().'/assets/vendor/php-email-form/validate.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'purecounter', get_template_directory_uri().'/assets/vendor/purecounter/purecounter.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'swiper', get_template_directory_uri().'/assets/vendor/swiper/swiper-bundle.min.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'typed', get_template_directory_uri().'/assets/vendor/typed.js/typed.min.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'waypoints', get_template_directory_uri().'/assets/vendor/waypoints/noframework.waypoints.js',array(), _S_VERSION, true);
-    wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/main.js"',array(), _S_VERSION, true);
+	// Theme JS files (v1 template; replaced in v2).
+	wp_enqueue_script( 'aos', get_template_directory_uri() . '/assets/vendor/aos/aos.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/vendor//bootstrap/js/bootstrap.bundle.min.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'glightbox', get_template_directory_uri() . '/assets/vendor/glightbox/js/glightbox.min.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/vendor/isotope-layout/isotope.pkgd.min.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'validate', get_template_directory_uri() . '/assets/vendor/php-email-form/validate.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'purecounter', get_template_directory_uri() . '/assets/vendor/purecounter/purecounter.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/vendor/swiper/swiper-bundle.min.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'typed', get_template_directory_uri() . '/assets/vendor/typed.js/typed.min.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/assets/vendor/waypoints/noframework.waypoints.js', array(), ABUOBAIDA_VERSION, true );
+	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js"', array(), ABUOBAIDA_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

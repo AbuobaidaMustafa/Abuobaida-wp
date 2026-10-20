@@ -192,3 +192,4 @@ flowchart LR
 | 2026-10-20 | Decisions | The owner chose design A (D-25), approved the v1 hotfix (D-22), dropped ACF for v2 in favour of native fields (D-27), and approved pushing feature branches for review (D-28). |
 | 2026-10-20 | 02 | Done: direction A chosen; no artboard revisions requested. |
 | 2026-10-20 | 04 | Done on `feature/04-repo-hygiene`: ignore files, editorconfig, tools/ (local env, QA scripts, changed-lines PHPCS gate, logical-CSS check, checker installer, zip builder), own composer, phpcs and package configs, CI workflow, theme metadata, `ABUOBAIDA_VERSION`, dead files removed. Output byte-identical. |
+| 2026-10-20 | 05 | Done on `feature/05-v1-hotfix`: theme 1.0.1. One valid document per page; works without ACF; content visible without JS; reduced motion; keyboard-operable menu; axe failures on post, page, search and 404 cleared; the whole theme passes PHPCS (0 errors and 0 warnings, from 650 and 274). Zip built and install-tested. |

@@ -47,7 +47,7 @@ wp i18n make-pot . languages/abuobaida.pot && msgfmt --statistics languages/ar.p
 
 ## 4. Definition of done (every implementation session)
 
-1. **Lint:** `php -l` is clean. PHPCS shows **0 errors in changed files**; warnings are justified in the handoff.
+1. **Lint:** `php -l` is clean. PHPCS is **clean on the whole theme** (true since 1.0.1, gated in CI). `tools/qa/phpcs-changed.py` gives a quick report on the session's own lines.
 2. **Runtime:** with `WP_DEBUG` on, rendering the touched templates in **en, ar and zh** adds no new lines to `debug.log`.
 3. **Degradation:** touched templates render without a fatal error when **Polylang**, **CF7** or **abuobaida-core** is deactivated, one at a time (and **ACF**, for v1 templates).
 4. **Screenshots** of the touched templates at **375 and 1280 px in en, ar and zh** are compared with the approved design (G1). Differences are listed.

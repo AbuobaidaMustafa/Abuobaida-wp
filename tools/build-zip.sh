@@ -28,7 +28,7 @@ while IFS= read -r pattern; do
 	else
 		find "$STAGE/abuobaida" -name "$pattern" -exec rm -rf {} +
 	fi
-done < <(git show "$REF:.distignore")
+done < <(git show "$REF:.distignore" 2>/dev/null || true) # Refs before S04 have no .distignore.
 
 ZIP="$OUT/abuobaida-${VERSION:-dev}.zip"
 rm -f "$ZIP"

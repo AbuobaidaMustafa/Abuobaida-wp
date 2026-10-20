@@ -88,3 +88,4 @@ Each entry has an ID, a status and its evidence.
 | Q-12 | Is your public contact email `info@abuobaida.sd`? Which social profiles are real (GitHub is; LinkedIn? Mostaql URL?) | S08, S10 |
 | Q-13 | Contact-form spam protection: CF7 with Akismet, a honeypot add-on, or Cloudflare Turnstile? | S10 |
 | Q-14 | The repository has an orphan `main` branch holding a 2021 zip of this theme (`abuobaida.zip`, same code as `master`). Keep it, or delete it before going public? Old commits also show the author email `abobeada@gmail.com`: fine to stay public, or part of the D-26 fresh-start decision? | S19 |
+| Q-15 | The live v1 site uses BootstrapMade's free iPortfolio template, whose licence requires a visible "Designed by BootstrapMade" footer credit; it was removed before 2023. Restore the one-line credit on the live site until v2 replaces the template (a visual change, so not done in 1.0.1)? | Live site now |

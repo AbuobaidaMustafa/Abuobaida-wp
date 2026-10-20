@@ -1,0 +1,6 @@
+# v1 stylesheets that still use physical properties.
+# They are rewritten or deleted in Sessions 13–14; remove each line when that happens.
+style.css
+style-rtl.css
+assets/css/style.css
+assets/css/404.css

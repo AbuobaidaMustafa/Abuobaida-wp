@@ -1,35 +1,56 @@
 {
-    "name": "automattic/underscores",
-    "type": "wordpress-theme",
-    "description": "Hi. I'm a starter theme called _s, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.",
-    "keywords": [
-        "WordPress",
-        "Themes"
-    ],
-    "homepage": "https://github.com/Automattic/_s",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "Contributors",
-            "homepage": "https://github.com/Automattic/_s/graphs/contributors"
-        }
-    ],
-    "require": {
-        "php": ">=5.6"
-    },
-    "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-        "wptrt/wpthemereview": "^0.2.1",
-        "php-parallel-lint/php-parallel-lint": "^1.2.0",
-        "wp-cli/i18n-command": "^2.2.5"
-    },
-    "scripts": {
-        "lint:wpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
-        "lint:php": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor .",
-        "make-pot": "wp i18n make-pot . languages/_s.pot"
-    },
-    "support": {
-        "issues": "https://github.com/Automattic/_s/issues",
-        "source": "https://github.com/Automattic/_s"
+  "name": "abuobaidamustafa/abuobaida",
+  "description": "Personal portfolio theme for Abuobaida Mustafa: a classic WordPress theme, trilingual (Arabic, English, Chinese).",
+  "type": "wordpress-theme",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://abuobaida.sd/",
+  "authors": [
+    {
+      "name": "Abuobaida Mustafa",
+      "homepage": "https://github.com/AbuobaidaMustafa"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/AbuobaidaMustafa/Abuobaida-wp/issues",
+    "source": "https://github.com/AbuobaidaMustafa/Abuobaida-wp"
+  },
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "php-parallel-lint/php-parallel-lint": "^1.4",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "squizlabs/php_codesniffer": "^3.13",
+    "wp-cli/i18n-command": "^2.6",
+    "wp-coding-standards/wpcs": "^3.4"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "lint": [
+      "@lint:php",
+      "@lint:changed",
+      "@lint:css"
+    ],
+    "lint:php": "parallel-lint --exclude .git --exclude vendor --exclude node_modules .",
+    "lint:changed": "python3 tools/qa/phpcs-changed.py",
+    "lint:wpcs": "phpcs",
+    "lint:css": "tools/qa/check-logical-css.sh",
+    "fix:wpcs": "phpcbf",
+    "make-pot": "wp i18n make-pot . languages/abuobaida.pot --exclude=docs,tools,vendor,node_modules,assets/vendor"
+  },
+  "scripts-descriptions": {
+    "lint": "Syntax check, PHPCS on changed lines, logical-CSS check (the CI gate).",
+    "lint:php": "PHP syntax check of every file.",
+    "lint:changed": "PHPCS errors on lines changed since origin/master (no new violations).",
+    "lint:wpcs": "Full PHPCS report, including legacy v1 violations.",
+    "lint:css": "Fail on physical left/right CSS properties (RTL safety).",
+    "fix:wpcs": "Auto-fix PHPCS formatting (use on new code, not on legacy v1 files).",
+    "make-pot": "Regenerate languages/abuobaida.pot."
+  }
 }
